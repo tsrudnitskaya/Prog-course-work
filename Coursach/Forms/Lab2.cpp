@@ -238,8 +238,8 @@ System::Void Coursach::Lab2::btnBinarySearch_Click(System::Object^ sender, Syste
 {
 	hideInfo();
 	int neededNum = Convert::ToInt16(textBoxNum->Text);
-	int i = binarySearch(Arr, neededNum, 0, arrayWidth - 1);
-	showEl(i);
+	int pos = binarySearch(Arr, neededNum, 0, arrayWidth - 1);
+	showEl(pos);
 }
 
 System::Void Coursach::Lab2::btnBruteforceSearch_Click(System::Object^ sender, System::EventArgs^ e)

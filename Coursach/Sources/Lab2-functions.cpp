@@ -185,13 +185,19 @@ int binarySearch(int* Arr, int neededNum, int startPos, int endPos) {
         //если число больше, чем нужное, то рекурсивно
         //вызываем функцию снова на отрезке слева от указателя
         else if (Arr[i] > neededNum)
-            binarySearch(Arr, neededNum, 0, i - 1);
+            binarySearch(Arr, neededNum, startPos, i - 1);
         //или возвращаем позицию найденного числа
         else
             return i;
     }
-    //Если искомого числа в массиве нет, возвращаем -1
-    else return -1;
+    //последний рассматриваемый элемент может быть искомым
+    //проверим это
+    else if (Arr[startPos] == neededNum)
+        return startPos;
+    //Если искомое число и теперь не наншлось, то это значит,
+    //что в массиве его нет, возвращаем -1
+    else
+        return -1;
 }
 int bruteforce(int arrWidth, int* Arr, int neededNum) {
     int i = 0;
