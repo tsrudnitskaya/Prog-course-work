@@ -18,10 +18,6 @@ System::Void Coursach::MainForm::btnCloseForm_Click(System::Object^ sender, Syst
 	Application::Exit();
 }
 
-System::Void Coursach::MainForm::button1_Click_1(System::Object^ sender, System::EventArgs^ e)
-{
-	return System::Void();
-}
 
 System::Void Coursach::MainForm::btnLab2_Click(System::Object^ sender, System::EventArgs^ e)
 {
@@ -29,5 +25,6 @@ System::Void Coursach::MainForm::btnLab2_Click(System::Object^ sender, System::E
 	form->MdiParent = this;
 	form->Dock = System::Windows::Forms::DockStyle::Fill;
 	form->Show();
+
 	welcomePanel->Visible = false;
 }

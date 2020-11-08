@@ -48,7 +48,7 @@ namespace Coursach {
 	private: System::Windows::Forms::Button^ btnSearchLess;
 	private: System::Windows::Forms::Label^ label5;
 	private: System::Windows::Forms::Button^ btnBruteforceSearch;
-	private: System::Windows::Forms::TextBox^ textBoxNum;
+
 	private: System::Windows::Forms::TextBox^ textBoxIndexA;
 
 
@@ -59,7 +59,7 @@ namespace Coursach {
 	private: System::Windows::Forms::TextBox^ textBoxIndexB;
 
 	private: System::Windows::Forms::Label^ infoLabelHeader;
-	private: System::Windows::Forms::Label^ errorLabel1;
+
 	private: System::Windows::Forms::Label^ infoLabel1;
 
 	private: System::Windows::Forms::Label^ infoLabelHeader4;
@@ -76,6 +76,10 @@ namespace Coursach {
 	private: System::Windows::Forms::Button^ btnGetArray;
 	private: System::Windows::Forms::DataGridView^ formTable;
 	private: System::Windows::Forms::Label^ label3;
+	private: System::Windows::Forms::TextBox^ textBoxNum;
+	private: System::Windows::Forms::Button^ errorLabel1;
+
+
 	protected:
 
 	private:
@@ -92,6 +96,7 @@ namespace Coursach {
 		void InitializeComponent(void)
 		{
 			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle1 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(Lab2::typeid));
 			this->btnCloseForm = (gcnew System::Windows::Forms::Button());
 			this->infoLabel3 = (gcnew System::Windows::Forms::Label());
 			this->arrayControlsPanel = (gcnew System::Windows::Forms::Panel());
@@ -120,8 +125,8 @@ namespace Coursach {
 			this->infoLabel1 = (gcnew System::Windows::Forms::Label());
 			this->btnBruteforceSearch = (gcnew System::Windows::Forms::Button());
 			this->formTable = (gcnew System::Windows::Forms::DataGridView());
-			this->errorLabel1 = (gcnew System::Windows::Forms::Label());
 			this->btnGetArray = (gcnew System::Windows::Forms::Button());
+			this->errorLabel1 = (gcnew System::Windows::Forms::Button());
 			this->arrayControlsPanel->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->formTable))->BeginInit();
 			this->SuspendLayout();
@@ -142,7 +147,7 @@ namespace Coursach {
 			// 
 			this->infoLabel3->AutoSize = true;
 			this->infoLabel3->Font = (gcnew System::Drawing::Font(L"Segoe UI", 10));
-			this->infoLabel3->Location = System::Drawing::Point(202, 296);
+			this->infoLabel3->Location = System::Drawing::Point(202, 313);
 			this->infoLabel3->Name = L"infoLabel3";
 			this->infoLabel3->Size = System::Drawing::Size(201, 19);
 			this->infoLabel3->TabIndex = 32;
@@ -197,7 +202,7 @@ namespace Coursach {
 			// 
 			this->infoLabelHeader4->AutoSize = true;
 			this->infoLabelHeader4->Font = (gcnew System::Drawing::Font(L"Segoe UI", 10, System::Drawing::FontStyle::Bold));
-			this->infoLabelHeader4->Location = System::Drawing::Point(202, 255);
+			this->infoLabelHeader4->Location = System::Drawing::Point(202, 272);
 			this->infoLabelHeader4->Name = L"infoLabelHeader4";
 			this->infoLabelHeader4->Size = System::Drawing::Size(143, 19);
 			this->infoLabelHeader4->TabIndex = 27;
@@ -223,7 +228,7 @@ namespace Coursach {
 			// infoLabel4
 			// 
 			this->infoLabel4->AutoSize = true;
-			this->infoLabel4->Location = System::Drawing::Point(493, 258);
+			this->infoLabel4->Location = System::Drawing::Point(493, 275);
 			this->infoLabel4->Name = L"infoLabel4";
 			this->infoLabel4->Size = System::Drawing::Size(35, 13);
 			this->infoLabel4->TabIndex = 26;
@@ -236,7 +241,7 @@ namespace Coursach {
 			this->textBoxNum->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
 			this->textBoxNum->Location = System::Drawing::Point(560, 36);
 			this->textBoxNum->Name = L"textBoxNum";
-			this->textBoxNum->Size = System::Drawing::Size(118, 20);
+			this->textBoxNum->Size = System::Drawing::Size(167, 20);
 			this->textBoxNum->TabIndex = 18;
 			// 
 			// label5
@@ -269,7 +274,7 @@ namespace Coursach {
 			// 
 			this->infoLabelHeader2->AutoSize = true;
 			this->infoLabelHeader2->Font = (gcnew System::Drawing::Font(L"Segoe UI", 10, System::Drawing::FontStyle::Bold));
-			this->infoLabelHeader2->Location = System::Drawing::Point(202, 272);
+			this->infoLabelHeader2->Location = System::Drawing::Point(202, 289);
 			this->infoLabelHeader2->Name = L"infoLabelHeader2";
 			this->infoLabelHeader2->Size = System::Drawing::Size(172, 19);
 			this->infoLabelHeader2->TabIndex = 25;
@@ -289,7 +294,7 @@ namespace Coursach {
 			// infoLabel2
 			// 
 			this->infoLabel2->AutoSize = true;
-			this->infoLabel2->Location = System::Drawing::Point(493, 275);
+			this->infoLabel2->Location = System::Drawing::Point(493, 292);
 			this->infoLabel2->Name = L"infoLabel2";
 			this->infoLabel2->Size = System::Drawing::Size(35, 13);
 			this->infoLabel2->TabIndex = 24;
@@ -327,7 +332,7 @@ namespace Coursach {
 			this->textBoxIndexA->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
 			this->textBoxIndexA->Location = System::Drawing::Point(4, 297);
 			this->textBoxIndexA->Name = L"textBoxIndexA";
-			this->textBoxIndexA->Size = System::Drawing::Size(75, 20);
+			this->textBoxIndexA->Size = System::Drawing::Size(81, 20);
 			this->textBoxIndexA->TabIndex = 23;
 			// 
 			// btnSearchMax
@@ -364,7 +369,7 @@ namespace Coursach {
 			this->btnSwap->ForeColor = System::Drawing::Color::White;
 			this->btnSwap->Location = System::Drawing::Point(4, 323);
 			this->btnSwap->Name = L"btnSwap";
-			this->btnSwap->Size = System::Drawing::Size(160, 35);
+			this->btnSwap->Size = System::Drawing::Size(166, 35);
 			this->btnSwap->TabIndex = 25;
 			this->btnSwap->Text = L"Поменять местами";
 			this->btnSwap->UseVisualStyleBackColor = false;
@@ -419,7 +424,7 @@ namespace Coursach {
 			this->textBoxIndexB->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
 			this->textBoxIndexB->Location = System::Drawing::Point(89, 297);
 			this->textBoxIndexB->Name = L"textBoxIndexB";
-			this->textBoxIndexB->Size = System::Drawing::Size(75, 20);
+			this->textBoxIndexB->Size = System::Drawing::Size(81, 20);
 			this->textBoxIndexB->TabIndex = 24;
 			// 
 			// btnSort
@@ -466,6 +471,7 @@ namespace Coursach {
 			this->btnBruteforceSearch->AutoSize = true;
 			this->btnBruteforceSearch->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(1)),
 				static_cast<System::Int32>(static_cast<System::Byte>(142)), static_cast<System::Int32>(static_cast<System::Byte>(237)));
+			this->btnBruteforceSearch->Enabled = false;
 			this->btnBruteforceSearch->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->btnBruteforceSearch->ForeColor = System::Drawing::Color::White;
 			this->btnBruteforceSearch->Location = System::Drawing::Point(560, 218);
@@ -485,6 +491,7 @@ namespace Coursach {
 			this->formTable->AutoSizeColumnsMode = System::Windows::Forms::DataGridViewAutoSizeColumnsMode::AllCells;
 			this->formTable->AutoSizeRowsMode = System::Windows::Forms::DataGridViewAutoSizeRowsMode::AllCells;
 			this->formTable->BackgroundColor = System::Drawing::Color::White;
+			this->formTable->BorderStyle = System::Windows::Forms::BorderStyle::None;
 			this->formTable->CellBorderStyle = System::Windows::Forms::DataGridViewCellBorderStyle::None;
 			this->formTable->ColumnHeadersBorderStyle = System::Windows::Forms::DataGridViewHeaderBorderStyle::None;
 			this->formTable->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
@@ -505,19 +512,8 @@ namespace Coursach {
 			this->formTable->RowHeadersVisible = false;
 			this->formTable->ScrollBars = System::Windows::Forms::ScrollBars::None;
 			this->formTable->ShowEditingIcon = false;
-			this->formTable->Size = System::Drawing::Size(327, 218);
+			this->formTable->Size = System::Drawing::Size(327, 222);
 			this->formTable->TabIndex = 24;
-			// 
-			// errorLabel1
-			// 
-			this->errorLabel1->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Bottom | System::Windows::Forms::AnchorStyles::Left));
-			this->errorLabel1->AutoSize = true;
-			this->errorLabel1->Location = System::Drawing::Point(43, 472);
-			this->errorLabel1->Name = L"errorLabel1";
-			this->errorLabel1->Size = System::Drawing::Size(50, 13);
-			this->errorLabel1->TabIndex = 28;
-			this->errorLabel1->Text = L"Ошибка!";
-			this->errorLabel1->Visible = false;
 			// 
 			// btnGetArray
 			// 
@@ -525,6 +521,7 @@ namespace Coursach {
 			this->btnGetArray->FlatAppearance->BorderColor = System::Drawing::Color::Orange;
 			this->btnGetArray->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->btnGetArray->ForeColor = System::Drawing::Color::White;
+			this->btnGetArray->ImageAlign = System::Drawing::ContentAlignment::MiddleLeft;
 			this->btnGetArray->Location = System::Drawing::Point(49, 47);
 			this->btnGetArray->Margin = System::Windows::Forms::Padding(2);
 			this->btnGetArray->Name = L"btnGetArray";
@@ -534,14 +531,32 @@ namespace Coursach {
 			this->btnGetArray->UseVisualStyleBackColor = false;
 			this->btnGetArray->Click += gcnew System::EventHandler(this, &Lab2::btnGetArray_Click);
 			// 
+			// errorLabel1
+			// 
+			this->errorLabel1->BackColor = System::Drawing::Color::Transparent;
+			this->errorLabel1->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"errorLabel1.BackgroundImage")));
+			this->errorLabel1->BackgroundImageLayout = System::Windows::Forms::ImageLayout::None;
+			this->errorLabel1->FlatAppearance->BorderSize = 0;
+			this->errorLabel1->FlatAppearance->MouseOverBackColor = System::Drawing::Color::Transparent;
+			this->errorLabel1->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->errorLabel1->Location = System::Drawing::Point(46, 460);
+			this->errorLabel1->Name = L"errorLabel1";
+			this->errorLabel1->Padding = System::Windows::Forms::Padding(20, 0, 0, 0);
+			this->errorLabel1->Size = System::Drawing::Size(403, 23);
+			this->errorLabel1->TabIndex = 32;
+			this->errorLabel1->Text = L"button1";
+			this->errorLabel1->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
+			this->errorLabel1->UseVisualStyleBackColor = false;
+			this->errorLabel1->Visible = false;
+			// 
 			// Lab2
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::Color::White;
 			this->ClientSize = System::Drawing::Size(861, 494);
-			this->Controls->Add(this->arrayControlsPanel);
 			this->Controls->Add(this->errorLabel1);
+			this->Controls->Add(this->arrayControlsPanel);
 			this->Controls->Add(this->btnGetArray);
 			this->Controls->Add(this->btnCloseForm);
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::None;
@@ -551,7 +566,6 @@ namespace Coursach {
 			this->arrayControlsPanel->PerformLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->formTable))->EndInit();
 			this->ResumeLayout(false);
-			this->PerformLayout();
 
 		}
 #pragma endregion
@@ -565,7 +579,13 @@ namespace Coursach {
 	private: void showArrayInForm();
 
 		   //вывод времени выполнения функции
-	private: void showTime(int time);
+	private: int intTypeCheck(String^ text);
+
+		   //вывод времени выполнения функции
+	private: int indexTypeCheck(String^ text, String^ errorText);
+
+		   //вывод времени выполнения функции
+	private: void showTime(int time, String^ unit);
 
 		   //вывод количества найденных элементов
 	private: void showNum(int num);

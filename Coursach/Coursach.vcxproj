@@ -138,13 +138,20 @@
   <ItemGroup>
     <EmbeddedResource Include="Forms\Lab2.resx">
       <DependentUpon>Forms\Lab2.h</DependentUpon>
+      <LogicalName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Coursach.Lab2.resources</LogicalName>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MainForm.resx">
       <DependentUpon>Forms\MainForm.h</DependentUpon>
+      <LogicalName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Coursach.MainForm.resources</LogicalName>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="images\background.jpg" />
+    <Image Include="images\error-icon.png" />
+    <Image Include="images\logo.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -1,7 +1,8 @@
 #include "Service.h"
 
-int getRandomNumber(int max, int min) {
-	return (rand() % (max - min) - min);
+
+int getRandomNumber(int min, int max) {
+    return (rand() % (max - min + 1) + min);
 }
 
 
@@ -22,3 +23,4 @@ void generateArray(int arrayWidth, int min, int max, int* Arr) {
     for (int i = 0; i < arrayWidth; ++i)
         Arr[i] = getRandomNumber(-99, 99);
 }
+

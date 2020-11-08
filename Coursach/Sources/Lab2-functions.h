@@ -38,7 +38,7 @@ void insertSort(int arrayWidth, int* Arr);
      * @param {arrayWidth} - количество элементов
      * @param  {*Arr} - указатель на массив, в который будут записываться значения
 */
-void quickSort(int arrayWidth, int* Arr, int start);
+void quickSort(int arrayWidth, int* Arr);
 
 /**
      * замер времени для разных функций сортировки (со схожими сигнатурами)
@@ -58,6 +58,10 @@ int benchFunc(int arrayWidth, int* Arr, void(*funcP)(int arrayWidth, int* Arr));
      * @returns возвращает время в мс
 */
 int benchFunc2(int arrayWidth, int* Arr, int(*funcP)(int arrayWidth, int* Arr));
+
+int benchFunc3(int* Arr, int neededNum, int startPos, int endPos, int(*funcP)(int* Arr, int neededNum, int startPos, int endPos));
+
+int benchFunc4(int arrWidth, int* Arr, int neededNum, int(*funcP)(int arrWidth, int* Arr, int neededNum));
 
 /**
      * замер времени исполнения разных функций
@@ -98,7 +102,7 @@ int searchMoreB(int arrayWidth, int* Arr, int b);
      * @param {*Arr} -указатель на массив, в котором проводится поиск
      * @param {neededNum} - заданное пользователем число
      * @param {startPos}, @param {endPos} - начальная и конечная позиции
-     * @returns возвращает искомое количество или -1, если элемент не найден
+     * @returns возвращает искомое число или -1, если элемент не найден
 */
 int binarySearch(int* Arr, int neededNum, int startPos, int endPos);
 /**
@@ -106,8 +110,9 @@ int binarySearch(int* Arr, int neededNum, int startPos, int endPos);
      * @param {arrayWidth}, @param  {*Arr} - количество элементов и указатель на массив, в котором проводится поиск
      * @param {neededNum} - заданное пользователем число
      * @param {position} - стартовая позиция, по умолчанию поиск начинается с нулевого элемента
-     * @returns возвращает искомое количество
+     * @returns возвращает  число или -1, если элемент не найден
 */
 int bruteforce(int arrWidth, int* Arr, int neededNum);
+
 
 #endif

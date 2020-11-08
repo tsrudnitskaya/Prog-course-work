@@ -82,8 +82,42 @@ void insertSort(int arrayWidth, int* Arr){
 
 }
 
-void quickSort(int arrayWidth, int* Arr, int start)
-{
+void quickSort(int arrayWidth, int* Arr) {
+    //устанавливаем левый (i) и правый (j) маркеры
+    int left = 0;
+    int right = arrayWidth - 1;
+
+    //находим опорный элемент в центре массива
+    int mid = Arr[arrayWidth / 2];
+
+    //продолжаем сводить маркеры, пока они не пересекутся
+    while (left <= right) {
+        //В левой части массива пропускаем элементы, которые меньше опорного
+        while (Arr[left] < mid) {
+            left++;
+        }
+        //В правой части пропускаем элементы, которые больше опорного
+        while (Arr[right] > mid) {
+            right--;
+        }
+        //Меняем элементы местами
+        if (left <= right) {
+            std::swap(Arr[left], Arr[right]);
+            left++;
+            right--;
+        }
+    }
+    //рекурсивно вызываем функцию сортировки, если остались неотсортированные элементы
+    if (right > 0) {
+        //для левой половины от места встречи маркеров
+        quickSort(right + 1, Arr);
+    }
+    if (left < arrayWidth) {
+        //для правой половины от места встречи маркеров
+        //чтобы не вводить отдельные переменные, 
+        //обращаемся к i-тому элементу массива по ссылке
+        quickSort(arrayWidth - left, &Arr[left]);
+    }
 }
 
 int benchFunc(int arrayWidth, int* Arr, void(*funcP)(int arrayWidth, int* Arr)) {
@@ -107,12 +141,46 @@ int benchFunc(int arrayWidth, int* Arr, void(*funcP)(int arrayWidth, int* Arr)) 
 int benchFunc2(int arrayWidth, int* Arr, int(*funcP)(int arrayWidth, int* Arr))
 {
     using Time = time_point<steady_clock>;
-    using Diff = microseconds;
+    using Diff = nanoseconds;
     // Запоминаем значение системного времени до начала выполнения функции
     // используем монотонные часы steady_clock
     Time start = steady_clock::now();
     // вызываем коллбэк функцию
     funcP(arrayWidth, Arr);
+    // Запоминаем значение системного времени после выполнения функции
+    Time end = steady_clock::now();
+    // Определяем тип объекта интервала и вычисляем его значение
+    Diff diff = duration_cast<Diff>(end - start);
+    // вычисляем количество тактов в интервале
+    // и возвращаем итог
+    return diff.count();
+}
+int benchFunc3(int* Arr, int neededNum, int startPos, int endPos, int(*funcP)(int* Arr, int neededNum, int startPos, int endPos))
+{
+    using Time = time_point<steady_clock>;
+    using Diff = nanoseconds;
+    // Запоминаем значение системного времени до начала выполнения функции
+    // используем монотонные часы steady_clock
+    Time start = steady_clock::now();
+    // вызываем коллбэк функцию
+    funcP(Arr, neededNum, startPos, endPos);
+    // Запоминаем значение системного времени после выполнения функции
+    Time end = steady_clock::now();
+    // Определяем тип объекта интервала и вычисляем его значение
+    Diff diff = duration_cast<Diff>(end - start);
+    // вычисляем количество тактов в интервале
+    // и возвращаем итог
+    return diff.count();
+}
+int benchFunc4(int arrWidth, int* Arr, int neededNum, int(*funcP)(int arrWidth, int* Arr, int neededNum))
+{
+    using Time = time_point<steady_clock>;
+    using Diff = nanoseconds;
+    // Запоминаем значение системного времени до начала выполнения функции
+    // используем монотонные часы steady_clock
+    Time start = steady_clock::now();
+    // вызываем коллбэк функцию
+    funcP(arrWidth, Arr, neededNum);
     // Запоминаем значение системного времени после выполнения функции
     Time end = steady_clock::now();
     // Определяем тип объекта интервала и вычисляем его значение
@@ -181,11 +249,11 @@ int binarySearch(int* Arr, int neededNum, int startPos, int endPos) {
         //если число меньше, чем нужное, то рекурсивно
         //вызываем функцию снова на отрезке справа от указателя
         if (Arr[i] < neededNum)
-            binarySearch(Arr, neededNum, i + 1, endPos);
+           return binarySearch(Arr, neededNum, i + 1, endPos);
         //если число больше, чем нужное, то рекурсивно
         //вызываем функцию снова на отрезке слева от указателя
         else if (Arr[i] > neededNum)
-            binarySearch(Arr, neededNum, startPos, i - 1);
+           return binarySearch(Arr, neededNum, startPos, i - 1);
         //или возвращаем позицию найденного числа
         else
             return i;

@@ -45,4 +45,15 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <Image Include="images\background.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="images\logo.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="images\error-icon.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+  </ItemGroup>
 </Project>

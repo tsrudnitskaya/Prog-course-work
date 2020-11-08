@@ -1,10 +1,18 @@
 #include "Lab2.h"
 #include "../Sources/Service.h"
-int cols = 10, rows = 10;
+//количество строк и столбцов для более удобного вывода массива
+int cols = 10, rows = 10; 
+//количество элементов
+//в случае, если надо будет переделать работу так
+//чтобы размерность массива задавалась пользователем,
+//нужно будет поменять только эти три переменные
 const int arrayWidth = 100,
+//диапазон значений массива
 min = -99,
 max = 99;
+//флаг, показывающий что массив отсортирован
 bool isSorted = false;
+//массив, заданной ширины
 int Arr[arrayWidth];
 
 
@@ -36,9 +44,44 @@ void Coursach::Lab2::showArrayInForm()
 	}
 }
 
-void Coursach::Lab2::showTime(int time)
+
+int Coursach::Lab2::intTypeCheck(String^ text)
 {
-	infoLabel1->Text = time.ToString() + "мкс";
+	Int16 num;
+	if (Int16::TryParse(System::Convert::ToString(text), num)) {
+		if (num >= min && num <= max)
+			return num;
+		else {
+			showError("Число " + num + " не входит в заданный диапазон");
+			return min - 100;
+		}
+	}
+	else {
+		showError("Проверьте правильность ввода");
+		return min - 100;
+	}
+}
+
+int Coursach::Lab2::indexTypeCheck(String^ text, String^ errorText)
+{
+	Int16 num;
+	if (Int16::TryParse(System::Convert::ToString(text), num)) {
+		if (num >= 0 && num < arrayWidth)
+			return num;
+		else {
+			showError("Введите правильный индекс от 0 до 99 в " + errorText);
+			return -1;
+		}
+	}
+	else {
+		showError("Введите оба индекса");
+		return -1;
+	}
+}
+
+void Coursach::Lab2::showTime(int time, String^ unit)
+{
+	infoLabel1->Text = time.ToString() + unit;
 	if (infoLabel1->Visible == false) infoLabel1->Visible = true;
 	if (infoLabelHeader->Visible == false) infoLabelHeader->Visible = true;
 }
@@ -86,22 +129,22 @@ void Coursach::Lab2::hideMiddle()
 
 void Coursach::Lab2::btnsDisable()
 {
-	if (btnBinarySearch->Enabled == true)
+	if (isSorted == false) {
 		btnBinarySearch->Enabled = false;
-	if (btnSearchLess->Enabled == true)
 		btnSearchLess->Enabled = false;
-	if (btnSearchMore->Enabled == true)
 		btnSearchMore->Enabled = false;
+		btnBruteforceSearch->Enabled = false;
+	}		
 }
 
 void Coursach::Lab2::btnsEnable()
 {
-	if (btnBinarySearch->Enabled == false)
+	if (isSorted == true) {
 		btnBinarySearch->Enabled = true;
-	if (btnSearchLess->Enabled == false)
 		btnSearchLess->Enabled = true;
-	if (btnSearchMore->Enabled == false)
 		btnSearchMore->Enabled = true;
+		btnBruteforceSearch->Enabled = true;
+	}
 }
 
 
@@ -160,7 +203,7 @@ System::Void Coursach::Lab2::btnSort_Click(System::Object^ sender, System::Event
 		time = benchFunc(arrayWidth, Arr, insertSort);
 		break;
 	case 4:
-		//time = benchFunc(arrayWidth, Arr, quickSort);
+		time = benchFunc(arrayWidth, Arr, quickSort);
 		break;
 	default:
 		String^ errText = "Вы не выбрали тип сортировки!";
@@ -170,7 +213,7 @@ System::Void Coursach::Lab2::btnSort_Click(System::Object^ sender, System::Event
 	isSorted = true;
 	btnsEnable();
 	showArrayInForm();
-	showTime(time);
+	showTime(time, "мкс");
 }
 
 System::Void Coursach::Lab2::btnSearchMin_Click(System::Object^ sender, System::EventArgs^ e)
@@ -178,7 +221,7 @@ System::Void Coursach::Lab2::btnSearchMin_Click(System::Object^ sender, System::
 	hideInfo();
 	int time = benchFunc2(arrayWidth, Arr, searchMin);
 	int index = searchMin(arrayWidth, Arr);
-	showTime(time);
+	showTime(time, "нс");
 	showEl(index);
 }
 
@@ -187,7 +230,7 @@ System::Void Coursach::Lab2::btnSearchMax_Click(System::Object^ sender, System::
 	hideInfo();
 	int time = benchFunc2(arrayWidth, Arr, searchMax);
 	int index = searchMax(arrayWidth, Arr);
-	showTime(time);
+	showTime(time, "нс");
 	showEl(index);
 }
 
@@ -209,40 +252,78 @@ System::Void Coursach::Lab2::btnSearchMiddle_Click(System::Object^ sender, Syste
 		infoLabel3->Visible = true;
 }
 
-System::Void Coursach::Lab2::btnSwap_Click(System::Object^ sender, System::EventArgs^ e)
-{
-	return System::Void();
-}
 
 System::Void Coursach::Lab2::btnSearchLess_Click(System::Object^ sender, System::EventArgs^ e)
 {
 	formTableClean();
-	int a = Convert::ToInt16(textBoxNum->Text);
-	int lessNum = searchLowerA(Arr, a);
-	for (int i = 0; i < lessNum; i++)
-		showEl(i);
-	showNum(lessNum);
+	int a = intTypeCheck(textBoxNum->Text);
+	if (a < min)
+		return;
+	else {
+		int lessNum = searchLowerA(Arr, a);
+		for (int i = 0; i < lessNum; i++)
+			showEl(i);
+		showNum(lessNum);
+	}
 }
 
 System::Void Coursach::Lab2::btnSearchMore_Click(System::Object^ sender, System::EventArgs^ e)
 {
 	formTableClean();
-	int b = Convert::ToInt16(textBoxNum->Text);
-	int moreNum = searchMoreB(arrayWidth, Arr, b);
-	for (int i = arrayWidth - 1; i > (arrayWidth - moreNum - 1); i--)
-		showEl(i);
-	showNum(moreNum);
+	int b = intTypeCheck(textBoxNum->Text);
+	if (b < min)
+		return;
+	else {
+		int moreNum = searchMoreB(arrayWidth, Arr, b);
+		for (int i = arrayWidth - 1; i > (arrayWidth - moreNum - 1); i--)
+			showEl(i);
+		showNum(moreNum);
+	}
 }
-
 System::Void Coursach::Lab2::btnBinarySearch_Click(System::Object^ sender, System::EventArgs^ e)
 {
 	hideInfo();
-	int neededNum = Convert::ToInt16(textBoxNum->Text);
-	int pos = binarySearch(Arr, neededNum, 0, arrayWidth - 1);
-	showEl(pos);
+	int neededNum = intTypeCheck(textBoxNum->Text);
+	if(neededNum < min)
+		return;
+	else {
+		int time = benchFunc3(Arr, neededNum, 0, arrayWidth - 1, binarySearch);
+		showTime(time, "нс");
+		int pos = binarySearch(Arr, neededNum, 0, arrayWidth - 1);
+		if (pos != -1)
+			showEl(pos);
+		else
+			infoLabel3->Visible = true;
+	}
 }
 
 System::Void Coursach::Lab2::btnBruteforceSearch_Click(System::Object^ sender, System::EventArgs^ e)
 {
-	return System::Void();
+	hideInfo();
+	int neededNum = intTypeCheck(textBoxNum->Text);
+	if (neededNum < min)
+		return;
+	else {
+		int time = benchFunc4(arrayWidth, Arr, neededNum, bruteforce);
+		showTime(time, "нс");
+		int pos = bruteforce(arrayWidth, Arr, neededNum);
+		if (pos != -1)
+			showEl(pos);
+		else
+			infoLabel3->Visible = true;
+	}
+}
+
+System::Void Coursach::Lab2::btnSwap_Click(System::Object^ sender, System::EventArgs^ e)
+{
+	int a = indexTypeCheck(textBoxIndexA->Text, "поле 1");
+	int b = indexTypeCheck(textBoxIndexB->Text, "поле 2");
+	if (a < 0 || b < 0)
+		return;
+	else {
+		std::swap(Arr[a], Arr[b]);
+		showArrayInForm();
+		showEl(a);
+		showEl(b);
+	}
 }

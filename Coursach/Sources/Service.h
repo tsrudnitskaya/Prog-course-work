@@ -9,7 +9,7 @@
 using namespace std::chrono;
 
 
-int getRandomNumber(int max, int min);
+int getRandomNumber(int min, int max);
 /**
      * генерация случайного числа
      * @param {min}, {max} - диапазон значений
