@@ -21,6 +21,6 @@ void generateArray(int arrayWidth, int min, int max, int* Arr) {
     srand(time(0));
     int el;
     for (int i = 0; i < arrayWidth; ++i)
-        Arr[i] = getRandomNumber(-99, 99);
+        Arr[i] = getRandomNumber(min, max);
 }
 

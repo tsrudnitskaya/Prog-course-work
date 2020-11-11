@@ -314,6 +314,7 @@ System::Void Coursach::Lab2::btnBruteforceSearch_Click(System::Object^ sender, S
 	}
 }
 
+
 System::Void Coursach::Lab2::btnSwap_Click(System::Object^ sender, System::EventArgs^ e)
 {
 	int a = indexTypeCheck(textBoxIndexA->Text, "поле 1");
@@ -326,4 +327,40 @@ System::Void Coursach::Lab2::btnSwap_Click(System::Object^ sender, System::Event
 		showEl(a);
 		showEl(b);
 	}
+}
+
+
+System::Void Coursach::Lab2::btnDop_Click(System::Object^ sender, System::EventArgs^ e)
+{
+	for (int i = 0; i < arrayWidth-1; i++) {
+		Arr[i] = Arr[i] + Arr[i + 1];
+	}
+	Arr[arrayWidth - 1] = Arr[arrayWidth - 1] + Arr[0];
+	showArrayInForm();
+}
+
+System::Void Coursach::Lab2::btnDop2_Click(System::Object^ sender, System::EventArgs^ e)
+{
+	int Arr2[arrayWidth];
+	generateArray(arrayWidth, 0, 99, Arr2);
+	for (int i = 0; i < arrayWidth; i++) {
+		Arr[i] = Arr[Arr2[i]];
+	}
+	showArrayInForm();
+}
+
+System::Void Coursach::Lab2::btnDop3_Click(System::Object^ sender, System::EventArgs^ e)
+{
+	int counter;
+	for (int i = 1; i <= 9; i++) {
+		counter = 0;
+		for (int j = 0; j < arrayWidth; j++) {
+			if (Arr[j] % i == 0) {
+				counter++;
+			}
+		}
+		labelDop->Text += "на " + i + ": " + counter + " эл.\n";
+	}
+		
+	labelDop->Visible = "true";
 }

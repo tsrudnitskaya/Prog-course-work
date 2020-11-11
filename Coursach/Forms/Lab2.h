@@ -78,6 +78,11 @@ namespace Coursach {
 	private: System::Windows::Forms::Label^ label3;
 	private: System::Windows::Forms::TextBox^ textBoxNum;
 	private: System::Windows::Forms::Button^ errorLabel1;
+	private: System::Windows::Forms::Button^ btnDop;
+	private: System::Windows::Forms::Button^ btnDop3;
+	private: System::Windows::Forms::Button^ btnDop2;
+	private: System::Windows::Forms::Label^ labelDop;
+
 
 
 	protected:
@@ -100,6 +105,9 @@ namespace Coursach {
 			this->btnCloseForm = (gcnew System::Windows::Forms::Button());
 			this->infoLabel3 = (gcnew System::Windows::Forms::Label());
 			this->arrayControlsPanel = (gcnew System::Windows::Forms::Panel());
+			this->btnDop3 = (gcnew System::Windows::Forms::Button());
+			this->btnDop2 = (gcnew System::Windows::Forms::Button());
+			this->btnDop = (gcnew System::Windows::Forms::Button());
 			this->label7 = (gcnew System::Windows::Forms::Label());
 			this->infoLabelHeader4 = (gcnew System::Windows::Forms::Label());
 			this->btnSearchMore = (gcnew System::Windows::Forms::Button());
@@ -127,6 +135,7 @@ namespace Coursach {
 			this->formTable = (gcnew System::Windows::Forms::DataGridView());
 			this->btnGetArray = (gcnew System::Windows::Forms::Button());
 			this->errorLabel1 = (gcnew System::Windows::Forms::Button());
+			this->labelDop = (gcnew System::Windows::Forms::Label());
 			this->arrayControlsPanel->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->formTable))->BeginInit();
 			this->SuspendLayout();
@@ -156,6 +165,10 @@ namespace Coursach {
 			// 
 			// arrayControlsPanel
 			// 
+			this->arrayControlsPanel->Controls->Add(this->labelDop);
+			this->arrayControlsPanel->Controls->Add(this->btnDop3);
+			this->arrayControlsPanel->Controls->Add(this->btnDop2);
+			this->arrayControlsPanel->Controls->Add(this->btnDop);
 			this->arrayControlsPanel->Controls->Add(this->label7);
 			this->arrayControlsPanel->Controls->Add(this->infoLabelHeader4);
 			this->arrayControlsPanel->Controls->Add(this->btnSearchMore);
@@ -184,15 +197,60 @@ namespace Coursach {
 			this->arrayControlsPanel->Controls->Add(this->formTable);
 			this->arrayControlsPanel->Location = System::Drawing::Point(46, 84);
 			this->arrayControlsPanel->Name = L"arrayControlsPanel";
-			this->arrayControlsPanel->Size = System::Drawing::Size(803, 369);
+			this->arrayControlsPanel->Size = System::Drawing::Size(803, 433);
 			this->arrayControlsPanel->TabIndex = 31;
 			this->arrayControlsPanel->Visible = false;
+			// 
+			// btnDop3
+			// 
+			this->btnDop3->AutoSize = true;
+			this->btnDop3->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(1)), static_cast<System::Int32>(static_cast<System::Byte>(142)),
+				static_cast<System::Int32>(static_cast<System::Byte>(237)));
+			this->btnDop3->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->btnDop3->ForeColor = System::Drawing::Color::White;
+			this->btnDop3->Location = System::Drawing::Point(579, 354);
+			this->btnDop3->Name = L"btnDop3";
+			this->btnDop3->Size = System::Drawing::Size(167, 35);
+			this->btnDop3->TabIndex = 35;
+			this->btnDop3->Text = L"Доп.задание3";
+			this->btnDop3->UseVisualStyleBackColor = false;
+			this->btnDop3->Click += gcnew System::EventHandler(this, &Lab2::btnDop3_Click);
+			// 
+			// btnDop2
+			// 
+			this->btnDop2->AutoSize = true;
+			this->btnDop2->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(1)), static_cast<System::Int32>(static_cast<System::Byte>(142)),
+				static_cast<System::Int32>(static_cast<System::Byte>(237)));
+			this->btnDop2->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->btnDop2->ForeColor = System::Drawing::Color::White;
+			this->btnDop2->Location = System::Drawing::Point(579, 313);
+			this->btnDop2->Name = L"btnDop2";
+			this->btnDop2->Size = System::Drawing::Size(167, 35);
+			this->btnDop2->TabIndex = 34;
+			this->btnDop2->Text = L"Доп.задание2";
+			this->btnDop2->UseVisualStyleBackColor = false;
+			this->btnDop2->Click += gcnew System::EventHandler(this, &Lab2::btnDop2_Click);
+			// 
+			// btnDop
+			// 
+			this->btnDop->AutoSize = true;
+			this->btnDop->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(1)), static_cast<System::Int32>(static_cast<System::Byte>(142)),
+				static_cast<System::Int32>(static_cast<System::Byte>(237)));
+			this->btnDop->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->btnDop->ForeColor = System::Drawing::Color::White;
+			this->btnDop->Location = System::Drawing::Point(579, 272);
+			this->btnDop->Name = L"btnDop";
+			this->btnDop->Size = System::Drawing::Size(167, 35);
+			this->btnDop->TabIndex = 33;
+			this->btnDop->Text = L"Доп.задание1";
+			this->btnDop->UseVisualStyleBackColor = false;
+			this->btnDop->Click += gcnew System::EventHandler(this, &Lab2::btnDop_Click);
 			// 
 			// label7
 			// 
 			this->label7->AutoSize = true;
 			this->label7->Font = (gcnew System::Drawing::Font(L"Segoe UI", 10));
-			this->label7->Location = System::Drawing::Point(556, 69);
+			this->label7->Location = System::Drawing::Point(575, 69);
 			this->label7->Name = L"label7";
 			this->label7->Size = System::Drawing::Size(51, 19);
 			this->label7->TabIndex = 23;
@@ -217,7 +275,7 @@ namespace Coursach {
 			this->btnSearchMore->Enabled = false;
 			this->btnSearchMore->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->btnSearchMore->ForeColor = System::Drawing::Color::White;
-			this->btnSearchMore->Location = System::Drawing::Point(560, 137);
+			this->btnSearchMore->Location = System::Drawing::Point(579, 137);
 			this->btnSearchMore->Name = L"btnSearchMore";
 			this->btnSearchMore->Size = System::Drawing::Size(167, 35);
 			this->btnSearchMore->TabIndex = 20;
@@ -239,7 +297,7 @@ namespace Coursach {
 			// textBoxNum
 			// 
 			this->textBoxNum->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
-			this->textBoxNum->Location = System::Drawing::Point(560, 36);
+			this->textBoxNum->Location = System::Drawing::Point(579, 36);
 			this->textBoxNum->Name = L"textBoxNum";
 			this->textBoxNum->Size = System::Drawing::Size(167, 20);
 			this->textBoxNum->TabIndex = 18;
@@ -248,7 +306,7 @@ namespace Coursach {
 			// 
 			this->label5->AutoSize = true;
 			this->label5->Font = (gcnew System::Drawing::Font(L"Segoe UI", 10));
-			this->label5->Location = System::Drawing::Point(556, 14);
+			this->label5->Location = System::Drawing::Point(575, 14);
 			this->label5->Name = L"label5";
 			this->label5->Size = System::Drawing::Size(199, 19);
 			this->label5->TabIndex = 19;
@@ -262,7 +320,7 @@ namespace Coursach {
 			this->btnSearchLess->Enabled = false;
 			this->btnSearchLess->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->btnSearchLess->ForeColor = System::Drawing::Color::White;
-			this->btnSearchLess->Location = System::Drawing::Point(560, 96);
+			this->btnSearchLess->Location = System::Drawing::Point(579, 96);
 			this->btnSearchLess->Name = L"btnSearchLess";
 			this->btnSearchLess->Size = System::Drawing::Size(167, 35);
 			this->btnSearchLess->TabIndex = 19;
@@ -383,7 +441,7 @@ namespace Coursach {
 			this->btnBinarySearch->Enabled = false;
 			this->btnBinarySearch->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->btnBinarySearch->ForeColor = System::Drawing::Color::White;
-			this->btnBinarySearch->Location = System::Drawing::Point(560, 177);
+			this->btnBinarySearch->Location = System::Drawing::Point(579, 177);
 			this->btnBinarySearch->Name = L"btnBinarySearch";
 			this->btnBinarySearch->Size = System::Drawing::Size(167, 35);
 			this->btnBinarySearch->TabIndex = 22;
@@ -474,7 +532,7 @@ namespace Coursach {
 			this->btnBruteforceSearch->Enabled = false;
 			this->btnBruteforceSearch->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->btnBruteforceSearch->ForeColor = System::Drawing::Color::White;
-			this->btnBruteforceSearch->Location = System::Drawing::Point(560, 218);
+			this->btnBruteforceSearch->Location = System::Drawing::Point(579, 218);
 			this->btnBruteforceSearch->Name = L"btnBruteforceSearch";
 			this->btnBruteforceSearch->Size = System::Drawing::Size(167, 35);
 			this->btnBruteforceSearch->TabIndex = 21;
@@ -505,14 +563,14 @@ namespace Coursach {
 			dataGridViewCellStyle1->WrapMode = System::Windows::Forms::DataGridViewTriState::False;
 			this->formTable->DefaultCellStyle = dataGridViewCellStyle1;
 			this->formTable->Enabled = false;
-			this->formTable->Location = System::Drawing::Point(205, 35);
+			this->formTable->Location = System::Drawing::Point(176, 36);
 			this->formTable->Margin = System::Windows::Forms::Padding(2);
 			this->formTable->Name = L"formTable";
 			this->formTable->ReadOnly = true;
 			this->formTable->RowHeadersVisible = false;
 			this->formTable->ScrollBars = System::Windows::Forms::ScrollBars::None;
 			this->formTable->ShowEditingIcon = false;
-			this->formTable->Size = System::Drawing::Size(327, 222);
+			this->formTable->Size = System::Drawing::Size(394, 222);
 			this->formTable->TabIndex = 24;
 			// 
 			// btnGetArray
@@ -539,7 +597,7 @@ namespace Coursach {
 			this->errorLabel1->FlatAppearance->BorderSize = 0;
 			this->errorLabel1->FlatAppearance->MouseOverBackColor = System::Drawing::Color::Transparent;
 			this->errorLabel1->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->errorLabel1->Location = System::Drawing::Point(46, 460);
+			this->errorLabel1->Location = System::Drawing::Point(46, 514);
 			this->errorLabel1->Name = L"errorLabel1";
 			this->errorLabel1->Padding = System::Windows::Forms::Padding(20, 0, 0, 0);
 			this->errorLabel1->Size = System::Drawing::Size(403, 23);
@@ -549,12 +607,23 @@ namespace Coursach {
 			this->errorLabel1->UseVisualStyleBackColor = false;
 			this->errorLabel1->Visible = false;
 			// 
+			// labelDop
+			// 
+			this->labelDop->AutoSize = true;
+			this->labelDop->Font = (gcnew System::Drawing::Font(L"Segoe UI", 10));
+			this->labelDop->Location = System::Drawing::Point(202, 260);
+			this->labelDop->Name = L"labelDop";
+			this->labelDop->Size = System::Drawing::Size(115, 19);
+			this->labelDop->TabIndex = 36;
+			this->labelDop->Text = L"Делятся нацело: ";
+			this->labelDop->Visible = false;
+			// 
 			// Lab2
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::Color::White;
-			this->ClientSize = System::Drawing::Size(861, 494);
+			this->ClientSize = System::Drawing::Size(861, 558);
 			this->Controls->Add(this->errorLabel1);
 			this->Controls->Add(this->arrayControlsPanel);
 			this->Controls->Add(this->btnGetArray);
@@ -651,5 +720,8 @@ private: System::Void btnBinarySearch_Click(System::Object^ sender, System::Even
 private: System::Void btnBruteforceSearch_Click(System::Object^ sender, System::EventArgs^ e);
 
 
+private: System::Void btnDop_Click(System::Object^ sender, System::EventArgs^ e);
+private: System::Void btnDop2_Click(System::Object^ sender, System::EventArgs^ e);
+private: System::Void btnDop3_Click(System::Object^ sender, System::EventArgs^ e);
 };
 }
