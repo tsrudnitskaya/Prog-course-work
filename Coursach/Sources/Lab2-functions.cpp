@@ -138,7 +138,7 @@ int benchFunc(int arrayWidth, int* Arr, void(*funcP)(int arrayWidth, int* Arr)) 
     return diff.count();
 }
 
-int benchFunc2(int arrayWidth, int* Arr, int(*funcP)(int arrayWidth, int* Arr))
+int benchFunc2(int arrayWidth, int* Arr, bool isSorted, int(*funcP)(int arrayWidth, int* Arr, bool isSorted))
 {
     using Time = time_point<steady_clock>;
     using Diff = nanoseconds;
@@ -146,7 +146,7 @@ int benchFunc2(int arrayWidth, int* Arr, int(*funcP)(int arrayWidth, int* Arr))
     // используем монотонные часы steady_clock
     Time start = steady_clock::now();
     // вызываем коллбэк функцию
-    funcP(arrayWidth, Arr);
+    funcP(arrayWidth, Arr, isSorted);
     // Запоминаем значение системного времени после выполнения функции
     Time end = steady_clock::now();
     // Определяем тип объекта интервала и вычисляем его значение
@@ -189,35 +189,54 @@ int benchFunc4(int arrWidth, int* Arr, int neededNum, int(*funcP)(int arrWidth, 
     // и возвращаем итог
     return diff.count();
 }
+int searchMaxInSorted(int arrayWidth, int* Arr)
+{
+    return Arr[arrayWidth];
+}
 
-int searchMax(int arrayWidth, int* Arr) {
+int searchMinInSorted(int arrayWidth, int* Arr)
+{
+    return Arr[0];
+}
+
+int searchMax(int arrayWidth, int* Arr, bool isSorted) {
     int index = 0;
-    int max = Arr[index];
-    for (int i = 1; i < arrayWidth; i++)
-        if (Arr[i] > max) {
-            max = Arr[i];
-            index = i;
-        }
+    if(isSorted)
+        index = arrayWidth - 1;
+    else {
+        int max = Arr[index];
+        for (int i = 1; i < arrayWidth; i++)
+            if (Arr[i] > max) {
+                max = Arr[i];
+                index = i;
+            }
+    }
     return index;
 }
-int searchMin(int arrayWidth, int* Arr) {
+int searchMin(int arrayWidth, int* Arr, bool isSorted) {
     int index = 0;
-    int min = Arr[index];
-    for (int i = 1; i < arrayWidth; i++)
-    {
-        if (Arr[i] < min) {            
-            min = Arr[i];
-            index = i;
+    if (isSorted)
+        index = 0;
+    else {
+        int min = Arr[index];
+        for (int i = 1; i < arrayWidth; i++)
+        {
+            if (Arr[i] < min) {
+                min = Arr[i];
+                index = i;
+            }
         }
     }
     return index;
 }
 
-int searchMiddle(int arrayWidth, int* Arr) {
+
+
+int searchMiddle(int arrayWidth, int* Arr, bool isSorted) {
     //вызов функции поиска минимального элемента
-    int minEl = Arr[searchMin(arrayWidth, Arr)];
+    int minEl = Arr[searchMin(arrayWidth, Arr, isSorted)];
     //вызов функции поиска максимального элемента
-    int maxEl = Arr[searchMax(arrayWidth, Arr)];
+    int maxEl = Arr[searchMax(arrayWidth, Arr, isSorted)];
     int middleEl = round((minEl + maxEl) / 2);
     return middleEl;
 }

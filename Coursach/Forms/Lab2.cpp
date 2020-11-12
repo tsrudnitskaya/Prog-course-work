@@ -149,6 +149,7 @@ void Coursach::Lab2::btnsEnable()
 
 
 
+
 void Coursach::Lab2::hideInfo()
 {
 	formTableClean();
@@ -219,8 +220,9 @@ System::Void Coursach::Lab2::btnSort_Click(System::Object^ sender, System::Event
 System::Void Coursach::Lab2::btnSearchMin_Click(System::Object^ sender, System::EventArgs^ e)
 {
 	hideInfo();
-	int time = benchFunc2(arrayWidth, Arr, searchMin);
-	int index = searchMin(arrayWidth, Arr);
+	int time, index;
+	time = benchFunc2(arrayWidth, Arr, isSorted, searchMin);
+	index = searchMin(arrayWidth, Arr, isSorted);
 	showTime(time, "нс");
 	showEl(index);
 }
@@ -228,23 +230,58 @@ System::Void Coursach::Lab2::btnSearchMin_Click(System::Object^ sender, System::
 System::Void Coursach::Lab2::btnSearchMax_Click(System::Object^ sender, System::EventArgs^ e)
 {
 	hideInfo();
-	int time = benchFunc2(arrayWidth, Arr, searchMax);
-	int index = searchMax(arrayWidth, Arr);
+	int time = benchFunc2(arrayWidth, Arr, isSorted, searchMax);
+	int index = searchMax(arrayWidth, Arr, isSorted);
 	showTime(time, "нс");
 	showEl(index);
 }
 
+int Coursach::Lab2::searchMiddleLeft(int* Arr, int arrayWidth, int marker, int middleEl, int middleNum)
+{
+	while (Arr[marker] >= middleEl && marker >= 0) {
+		if (Arr[marker] == middleEl) {
+			showEl(marker);
+			middleNum++;
+		}
+		marker--;
+	}
+	return middleNum;
+}
+int Coursach::Lab2::searchMiddleRight(int* Arr, int arrayWidth, int marker, int middleEl, int middleNum)
+{
+	while (Arr[marker] <= middleEl && marker < arrayWidth) {
+		if (Arr[marker] == middleEl) {
+			showEl(marker);
+			middleNum++;
+		}
+		marker++;
+	}
+	return middleNum;
+}
 System::Void Coursach::Lab2::btnSearchMiddle_Click(System::Object^ sender, System::EventArgs^ e)
 {
 	hideInfo();
 	int middleNum = 0;
-	int middleEl = searchMiddle(arrayWidth, Arr);
-	for (int i = 0; i < arrayWidth; i++) {
-		if (Arr[i] == middleEl) {
-			showEl(i);
-			middleNum++;
+	int middleEl = searchMiddle(arrayWidth, Arr, isSorted);
+	if (isSorted) {
+		int marker = arrayWidth / 2;
+		if (Arr[marker] > middleEl)
+			middleNum = searchMiddleLeft(Arr, arrayWidth, marker, middleEl, middleNum);
+		else if (Arr[marker] < middleEl)
+			middleNum = searchMiddleRight(Arr, arrayWidth, marker, middleEl, middleNum);
+		else {
+			middleNum = searchMiddleLeft(Arr, arrayWidth, marker, middleEl, middleNum);
+			middleNum += searchMiddleRight(Arr, arrayWidth, marker, middleEl, middleNum);
+		}			
+	}
+	else {
+		for (int i = 0; i < arrayWidth; i++) {
+			if (Arr[i] == middleEl) {
+				showEl(i);
+				middleNum++;
+			}
+
 		}
-			
 	}
 	showNum(middleNum);
 	showMiddle(middleEl);
@@ -327,40 +364,4 @@ System::Void Coursach::Lab2::btnSwap_Click(System::Object^ sender, System::Event
 		showEl(a);
 		showEl(b);
 	}
-}
-
-
-System::Void Coursach::Lab2::btnDop_Click(System::Object^ sender, System::EventArgs^ e)
-{
-	for (int i = 0; i < arrayWidth-1; i++) {
-		Arr[i] = Arr[i] + Arr[i + 1];
-	}
-	Arr[arrayWidth - 1] = Arr[arrayWidth - 1] + Arr[0];
-	showArrayInForm();
-}
-
-System::Void Coursach::Lab2::btnDop2_Click(System::Object^ sender, System::EventArgs^ e)
-{
-	int Arr2[arrayWidth];
-	generateArray(arrayWidth, 0, 99, Arr2);
-	for (int i = 0; i < arrayWidth; i++) {
-		Arr[i] = Arr[Arr2[i]];
-	}
-	showArrayInForm();
-}
-
-System::Void Coursach::Lab2::btnDop3_Click(System::Object^ sender, System::EventArgs^ e)
-{
-	int counter;
-	for (int i = 1; i <= 9; i++) {
-		counter = 0;
-		for (int j = 0; j < arrayWidth; j++) {
-			if (Arr[j] % i == 0) {
-				counter++;
-			}
-		}
-		labelDop->Text += "на " + i + ": " + counter + " эл.\n";
-	}
-		
-	labelDop->Visible = "true";
 }

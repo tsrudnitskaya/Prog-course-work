@@ -57,32 +57,31 @@ int benchFunc(int arrayWidth, int* Arr, void(*funcP)(int arrayWidth, int* Arr));
      * @param {*funcP} - указатель на одну из функций сортировки
      * @returns возвращает время в мс
 */
-int benchFunc2(int arrayWidth, int* Arr, int(*funcP)(int arrayWidth, int* Arr));
+int benchFunc2(int arrayWidth, int* Arr, bool isSorted, int(*funcP)(int arrayWidth, int* Arr, bool isSorted));
 
 int benchFunc3(int* Arr, int neededNum, int startPos, int endPos, int(*funcP)(int* Arr, int neededNum, int startPos, int endPos));
 
 int benchFunc4(int arrWidth, int* Arr, int neededNum, int(*funcP)(int arrWidth, int* Arr, int neededNum));
 
 /**
-     * замер времени исполнения разных функций
+     * поиск максимального элемента массива 
      * @param {arrayWidth}, @param  {*Arr} - количество элементов и ссылка на массив
-     * @param {*funcP} - указатель на коллбэк функцию
      * @returns возвращает время в мс
 */
-int searchMax(int arrayWidth, int* Arr);
+int searchMax(int arrayWidth, int* Arr, bool isSorted);
 /**
      * поиск минимального элемента массива
      * @param {arrayWidth}, @param  {*Arr} - количество элементов и указатель на массив, в котором проводится поиск
      * @returns возвращает минимальный элемент
 */
-int searchMin(int arrayWidth, int* Arr);
+int searchMin(int arrayWidth, int* Arr, bool isSorted);
 /**
      * поиск среднего элемента массива
      * @param {arrayWidth}, @param  {*Arr} - количество элементов и указатель на массив, в котором проводится поиск
      * @param {&middleNum} - ссылка на переменную, в которой хранится количество элементов, равных среднему
      * @returns возвращает минимальный элемент
 */
-int searchMiddle(int arrayWidth, int* Arr);
+int searchMiddle(int arrayWidth, int* Arr, bool isSorted);
 /**
      * подсчёт количества элементов, меньших а, вводимого пользователем
      * @param  {*Arr} - указатель на массив, в котором проводится поиск

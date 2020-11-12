@@ -63,11 +63,11 @@ namespace Coursach {
 			this->btnCloseForm = (gcnew System::Windows::Forms::Button());
 			this->controlslPanel = (gcnew System::Windows::Forms::Panel());
 			this->welcomePanel = (gcnew System::Windows::Forms::Panel());
+			this->workPanel = (gcnew System::Windows::Forms::Panel());
 			this->richTextBox1 = (gcnew System::Windows::Forms::RichTextBox());
 			this->workContolsPanel = (gcnew System::Windows::Forms::Panel());
-			this->workPanel = (gcnew System::Windows::Forms::Panel());
-			this->matrixDegree = (gcnew System::Windows::Forms::TextBox());
 			this->btnGetArray = (gcnew System::Windows::Forms::Button());
+			this->matrixDegree = (gcnew System::Windows::Forms::TextBox());
 			this->controlslPanel->SuspendLayout();
 			this->welcomePanel->SuspendLayout();
 			this->workContolsPanel->SuspendLayout();
@@ -109,6 +109,15 @@ namespace Coursach {
 			this->welcomePanel->Size = System::Drawing::Size(845, 485);
 			this->welcomePanel->TabIndex = 3;
 			// 
+			// workPanel
+			// 
+			this->workPanel->BackColor = System::Drawing::Color::White;
+			this->workPanel->Location = System::Drawing::Point(0, 0);
+			this->workPanel->Name = L"workPanel";
+			this->workPanel->Size = System::Drawing::Size(845, 485);
+			this->workPanel->TabIndex = 2;
+			this->workPanel->Visible = false;
+			// 
 			// richTextBox1
 			// 
 			this->richTextBox1->BackColor = System::Drawing::Color::White;
@@ -135,25 +144,6 @@ namespace Coursach {
 			this->workContolsPanel->Size = System::Drawing::Size(845, 49);
 			this->workContolsPanel->TabIndex = 4;
 			// 
-			// workPanel
-			// 
-			this->workPanel->BackColor = System::Drawing::Color::White;
-			this->workPanel->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->workPanel->Location = System::Drawing::Point(0, 0);
-			this->workPanel->Name = L"workPanel";
-			this->workPanel->Size = System::Drawing::Size(845, 485);
-			this->workPanel->TabIndex = 2;
-			this->workPanel->Visible = false;
-			// 
-			// matrixDegree
-			// 
-			this->matrixDegree->Font = (gcnew System::Drawing::Font(L"Segoe UI", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(204)));
-			this->matrixDegree->Location = System::Drawing::Point(50, 10);
-			this->matrixDegree->Name = L"matrixDegree";
-			this->matrixDegree->Size = System::Drawing::Size(88, 29);
-			this->matrixDegree->TabIndex = 0;
-			// 
 			// btnGetArray
 			// 
 			this->btnGetArray->BackColor = System::Drawing::Color::Orange;
@@ -166,8 +156,17 @@ namespace Coursach {
 			this->btnGetArray->Name = L"btnGetArray";
 			this->btnGetArray->Size = System::Drawing::Size(180, 32);
 			this->btnGetArray->TabIndex = 26;
-			this->btnGetArray->Text = L"—генерировать массив";
+			this->btnGetArray->Text = L"—генерировать матрицу";
 			this->btnGetArray->UseVisualStyleBackColor = false;
+			// 
+			// matrixDegree
+			// 
+			this->matrixDegree->Font = (gcnew System::Drawing::Font(L"Segoe UI", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->matrixDegree->Location = System::Drawing::Point(50, 10);
+			this->matrixDegree->Name = L"matrixDegree";
+			this->matrixDegree->Size = System::Drawing::Size(88, 29);
+			this->matrixDegree->TabIndex = 0;
 			// 
 			// Lab3
 			// 
