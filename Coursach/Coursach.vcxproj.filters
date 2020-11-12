@@ -27,6 +27,9 @@
     <ClCompile Include="Sources\Service.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Forms\Lab3.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Forms\MainForm.h">
@@ -40,6 +43,9 @@
     </ClInclude>
     <ClInclude Include="Sources\Service.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Forms\Lab3.h">
+      <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

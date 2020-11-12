@@ -26,5 +26,21 @@ System::Void Coursach::MainForm::btnLab2_Click(System::Object^ sender, System::E
 	form->Dock = System::Windows::Forms::DockStyle::Fill;
 	form->Show();
 
-	welcomePanel->Visible = false;
+	welcomeHide();
+}
+
+System::Void Coursach::MainForm::btnLab3_Click(System::Object^ sender, System::EventArgs^ e)
+{
+	Lab3^ form = gcnew Lab3();
+	form->MdiParent = this;
+	form->Dock = System::Windows::Forms::DockStyle::Fill;
+	form->Show();
+	welcomeHide();
+}
+
+void Coursach::MainForm::welcomeHide()
+{
+	if (welcomePanel->Visible == true) {
+		welcomePanel->Visible = false;
+	}
 }

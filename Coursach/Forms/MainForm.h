@@ -1,5 +1,6 @@
 #pragma once
 #include "Lab2.h"
+#include "Lab3.h"
 
 namespace Coursach {
 
@@ -97,10 +98,10 @@ namespace Coursach {
 			this->logo = (gcnew System::Windows::Forms::PictureBox());
 			this->btnCloseApp = (gcnew System::Windows::Forms::Button());
 			this->welcomePanel = (gcnew System::Windows::Forms::Panel());
-			this->label1 = (gcnew System::Windows::Forms::Label());
-			this->label2 = (gcnew System::Windows::Forms::Label());
-			this->label3 = (gcnew System::Windows::Forms::Label());
 			this->label4 = (gcnew System::Windows::Forms::Label());
+			this->label3 = (gcnew System::Windows::Forms::Label());
+			this->label2 = (gcnew System::Windows::Forms::Label());
+			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->MenuPanel->SuspendLayout();
 			this->logoWrapper->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->logo))->BeginInit();
@@ -130,6 +131,10 @@ namespace Coursach {
 			this->btnLab4->Dock = System::Windows::Forms::DockStyle::Top;
 			this->btnLab4->Enabled = false;
 			this->btnLab4->FlatAppearance->BorderSize = 0;
+			this->btnLab4->FlatAppearance->MouseDownBackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(28)),
+				static_cast<System::Int32>(static_cast<System::Byte>(72)), static_cast<System::Int32>(static_cast<System::Byte>(131)));
+			this->btnLab4->FlatAppearance->MouseOverBackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(28)),
+				static_cast<System::Int32>(static_cast<System::Byte>(72)), static_cast<System::Int32>(static_cast<System::Byte>(131)));
 			this->btnLab4->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->btnLab4->ForeColor = System::Drawing::Color::White;
 			this->btnLab4->Location = System::Drawing::Point(0, 217);
@@ -146,8 +151,11 @@ namespace Coursach {
 			this->btnLab3->BackColor = System::Drawing::Color::Transparent;
 			this->btnLab3->Cursor = System::Windows::Forms::Cursors::Hand;
 			this->btnLab3->Dock = System::Windows::Forms::DockStyle::Top;
-			this->btnLab3->Enabled = false;
 			this->btnLab3->FlatAppearance->BorderSize = 0;
+			this->btnLab3->FlatAppearance->MouseDownBackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(28)),
+				static_cast<System::Int32>(static_cast<System::Byte>(72)), static_cast<System::Int32>(static_cast<System::Byte>(131)));
+			this->btnLab3->FlatAppearance->MouseOverBackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(28)),
+				static_cast<System::Int32>(static_cast<System::Byte>(72)), static_cast<System::Int32>(static_cast<System::Byte>(131)));
 			this->btnLab3->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->btnLab3->ForeColor = System::Drawing::Color::White;
 			this->btnLab3->Location = System::Drawing::Point(0, 172);
@@ -158,6 +166,7 @@ namespace Coursach {
 			this->btnLab3->Text = L"Лабораторная работа 3";
 			this->btnLab3->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
 			this->btnLab3->UseVisualStyleBackColor = false;
+			this->btnLab3->Click += gcnew System::EventHandler(this, &MainForm::btnLab3_Click);
 			// 
 			// btnLab2
 			// 
@@ -189,6 +198,10 @@ namespace Coursach {
 			this->btnLab1->Dock = System::Windows::Forms::DockStyle::Top;
 			this->btnLab1->Enabled = false;
 			this->btnLab1->FlatAppearance->BorderSize = 0;
+			this->btnLab1->FlatAppearance->MouseDownBackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(28)),
+				static_cast<System::Int32>(static_cast<System::Byte>(72)), static_cast<System::Int32>(static_cast<System::Byte>(131)));
+			this->btnLab1->FlatAppearance->MouseOverBackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(28)),
+				static_cast<System::Int32>(static_cast<System::Byte>(72)), static_cast<System::Int32>(static_cast<System::Byte>(131)));
 			this->btnLab1->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->btnLab1->ForeColor = System::Drawing::Color::White;
 			this->btnLab1->Location = System::Drawing::Point(0, 82);
@@ -206,7 +219,7 @@ namespace Coursach {
 			this->logoWrapper->Dock = System::Windows::Forms::DockStyle::Top;
 			this->logoWrapper->Location = System::Drawing::Point(0, 0);
 			this->logoWrapper->Name = L"logoWrapper";
-			this->logoWrapper->Padding = System::Windows::Forms::Padding(6, 6, 6, 6);
+			this->logoWrapper->Padding = System::Windows::Forms::Padding(6);
 			this->logoWrapper->Size = System::Drawing::Size(252, 82);
 			this->logoWrapper->TabIndex = 3;
 			// 
@@ -255,28 +268,17 @@ namespace Coursach {
 			this->welcomePanel->Size = System::Drawing::Size(825, 544);
 			this->welcomePanel->TabIndex = 6;
 			// 
-			// label1
+			// label4
 			// 
-			this->label1->AutoSize = true;
-			this->label1->Font = (gcnew System::Drawing::Font(L"Segoe UI Light", 30, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->label4->AutoSize = true;
+			this->label4->BackColor = System::Drawing::Color::Transparent;
+			this->label4->Font = (gcnew System::Drawing::Font(L"Segoe UI Light", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->label1->Location = System::Drawing::Point(32, 111);
-			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(353, 54);
-			this->label1->TabIndex = 0;
-			this->label1->Text = L"Добро пожаловать";
-			// 
-			// label2
-			// 
-			this->label2->AutoSize = true;
-			this->label2->BackColor = System::Drawing::Color::Transparent;
-			this->label2->Font = (gcnew System::Drawing::Font(L"Segoe UI Light", 16, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(204)));
-			this->label2->Location = System::Drawing::Point(36, 232);
-			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(463, 30);
-			this->label2->TabIndex = 1;
-			this->label2->Text = L"Выберите одну из лабораторных, чтобы начать";
+			this->label4->Location = System::Drawing::Point(37, 497);
+			this->label4->Name = L"label4";
+			this->label4->Size = System::Drawing::Size(146, 21);
+			this->label4->TabIndex = 3;
+			this->label4->Text = L"Рудницкой Татьяны";
 			// 
 			// label3
 			// 
@@ -290,17 +292,28 @@ namespace Coursach {
 			this->label3->TabIndex = 2;
 			this->label3->Text = L"Работа студентки группы 0343";
 			// 
-			// label4
+			// label2
 			// 
-			this->label4->AutoSize = true;
-			this->label4->BackColor = System::Drawing::Color::Transparent;
-			this->label4->Font = (gcnew System::Drawing::Font(L"Segoe UI Light", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->label2->AutoSize = true;
+			this->label2->BackColor = System::Drawing::Color::Transparent;
+			this->label2->Font = (gcnew System::Drawing::Font(L"Segoe UI Light", 16, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->label4->Location = System::Drawing::Point(37, 497);
-			this->label4->Name = L"label4";
-			this->label4->Size = System::Drawing::Size(146, 21);
-			this->label4->TabIndex = 3;
-			this->label4->Text = L"Рудницкой Татьяны";
+			this->label2->Location = System::Drawing::Point(36, 232);
+			this->label2->Name = L"label2";
+			this->label2->Size = System::Drawing::Size(463, 30);
+			this->label2->TabIndex = 1;
+			this->label2->Text = L"Выберите одну из лабораторных, чтобы начать";
+			// 
+			// label1
+			// 
+			this->label1->AutoSize = true;
+			this->label1->Font = (gcnew System::Drawing::Font(L"Segoe UI Light", 30, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->label1->Location = System::Drawing::Point(32, 111);
+			this->label1->Name = L"label1";
+			this->label1->Size = System::Drawing::Size(353, 54);
+			this->label1->TabIndex = 0;
+			this->label1->Text = L"Добро пожаловать";
 			// 
 			// MainForm
 			// 
@@ -327,5 +340,8 @@ namespace Coursach {
 #pragma endregion
 private: System::Void btnCloseForm_Click(System::Object^ sender, System::EventArgs^ e);
 private: System::Void btnLab2_Click(System::Object^ sender, System::EventArgs^ e);
+private: System::Void btnLab3_Click(System::Object^ sender, System::EventArgs^ e);
+
+private: void welcomeHide();
 };
 }

@@ -121,12 +121,16 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Forms\Lab2.cpp" />
+    <ClCompile Include="Forms\Lab3.cpp" />
     <ClCompile Include="Forms\MainForm.cpp" />
     <ClCompile Include="Sources\Lab2-functions.cpp" />
     <ClCompile Include="Sources\Service.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Forms\Lab2.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="Forms\Lab3.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="Forms\MainForm.h">
@@ -139,6 +143,10 @@
     <EmbeddedResource Include="Forms\Lab2.resx">
       <DependentUpon>Forms\Lab2.h</DependentUpon>
       <LogicalName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Coursach.Lab2.resources</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Lab3.resx">
+      <DependentUpon>Forms\Lab3.h</DependentUpon>
+      <LogicalName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Coursach.Lab3.resources</LogicalName>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MainForm.resx">
       <DependentUpon>Forms\MainForm.h</DependentUpon>
