@@ -177,8 +177,10 @@ System::Void Coursach::Lab2::btnGetArray_Click(System::Object^ sender, System::E
 {
 	formTableSetup();
 	btnsDisable();
-	if (arrayControlsPanel->Visible == false)
+	if (arrayControlsPanel->Visible == false) {
 		arrayControlsPanel->Visible = true;
+	}
+		
 	generateArray(arrayWidth, min, max, Arr);
 	isSorted = false;
 	hideInfo();

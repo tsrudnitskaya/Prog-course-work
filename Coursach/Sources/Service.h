@@ -6,6 +6,8 @@
 #include <chrono>
 #include <cmath>
 #include <string>
+#include <thread>
+
 using namespace std::chrono;
 
 

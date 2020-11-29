@@ -124,6 +124,7 @@
     <ClCompile Include="Forms\Lab3.cpp" />
     <ClCompile Include="Forms\MainForm.cpp" />
     <ClCompile Include="Sources\Lab2-functions.cpp" />
+    <ClCompile Include="Sources\Lab3-functions.cpp" />
     <ClCompile Include="Sources\Service.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -137,6 +138,7 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="Sources\Lab2-functions.h" />
+    <ClInclude Include="Sources\Lab3-functions.h" />
     <ClInclude Include="Sources\Service.h" />
   </ItemGroup>
   <ItemGroup>
