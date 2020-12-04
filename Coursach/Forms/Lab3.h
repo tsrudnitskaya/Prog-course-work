@@ -148,10 +148,10 @@ namespace Coursach {
 		void InitializeComponent(void)
 		{
 			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(Lab3::typeid));
-			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle5 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
-			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle6 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
-			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle7 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
-			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle8 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle1 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle2 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle3 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle4 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
 			this->errPanel = (gcnew System::Windows::Forms::Panel());
 			this->errorPanel = (gcnew System::Windows::Forms::Panel());
 			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
@@ -167,6 +167,7 @@ namespace Coursach {
 			this->richTextBox1 = (gcnew System::Windows::Forms::RichTextBox());
 			this->welcomePanel = (gcnew System::Windows::Forms::Panel());
 			this->workPanel = (gcnew System::Windows::Forms::Panel());
+			this->richTextBox3 = (gcnew System::Windows::Forms::RichTextBox());
 			this->label8 = (gcnew System::Windows::Forms::Label());
 			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->richTextBox2 = (gcnew System::Windows::Forms::RichTextBox());
@@ -183,9 +184,8 @@ namespace Coursach {
 			this->quotersOptionsCombo = (gcnew System::Windows::Forms::ComboBox());
 			this->matrixView = (gcnew System::Windows::Forms::DataGridView());
 			this->secondMatrixPanel = (gcnew System::Windows::Forms::Panel());
-			this->label6 = (gcnew System::Windows::Forms::Label());
 			this->matrixView2 = (gcnew System::Windows::Forms::DataGridView());
-			this->richTextBox3 = (gcnew System::Windows::Forms::RichTextBox());
+			this->label6 = (gcnew System::Windows::Forms::Label());
 			this->errPanel->SuspendLayout();
 			this->errorPanel->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
@@ -382,6 +382,18 @@ namespace Coursach {
 			this->workPanel->TabIndex = 2;
 			this->workPanel->Visible = false;
 			// 
+			// richTextBox3
+			// 
+			this->richTextBox3->BorderStyle = System::Windows::Forms::BorderStyle::None;
+			this->richTextBox3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->richTextBox3->Location = System::Drawing::Point(46, 407);
+			this->richTextBox3->Name = L"richTextBox3";
+			this->richTextBox3->Size = System::Drawing::Size(258, 40);
+			this->richTextBox3->TabIndex = 45;
+			this->richTextBox3->Text = L"*Результаты действий при необходимости округляются до третьего знака, а слишком б"
+				L"ольшие числа не влезут в форму, сори";
+			// 
 			// label8
 			// 
 			this->label8->AutoSize = true;
@@ -568,6 +580,8 @@ namespace Coursach {
 			this->btnQuotersChange->TabIndex = 30;
 			this->btnQuotersChange->Text = L"Изменить";
 			this->btnQuotersChange->UseVisualStyleBackColor = false;
+			this->btnQuotersChange->Visible = false;
+			this->btnQuotersChange->Click += gcnew System::EventHandler(this, &Lab3::btnQuotersChange_Click);
 			// 
 			// quotersOptionsCombo
 			// 
@@ -575,13 +589,14 @@ namespace Coursach {
 			this->quotersOptionsCombo->Font = (gcnew System::Drawing::Font(L"Segoe UI", 12));
 			this->quotersOptionsCombo->FormattingEnabled = true;
 			this->quotersOptionsCombo->Items->AddRange(gcnew cli::array< System::Object^  >(4) {
-				L"По-кругу", L"По-диагонали", L"Верхние и нижние",
+				L"По кругу", L"По диагонали", L"Верхние и нижние",
 					L"Левые и правые"
 			});
 			this->quotersOptionsCombo->Location = System::Drawing::Point(422, 44);
 			this->quotersOptionsCombo->Name = L"quotersOptionsCombo";
 			this->quotersOptionsCombo->Size = System::Drawing::Size(243, 29);
 			this->quotersOptionsCombo->TabIndex = 29;
+			this->quotersOptionsCombo->SelectedIndexChanged += gcnew System::EventHandler(this, &Lab3::quotersOptionsCombo_SelectedIndexChanged);
 			// 
 			// matrixView
 			// 
@@ -592,26 +607,28 @@ namespace Coursach {
 			this->matrixView->AutoSizeColumnsMode = System::Windows::Forms::DataGridViewAutoSizeColumnsMode::AllCells;
 			this->matrixView->AutoSizeRowsMode = System::Windows::Forms::DataGridViewAutoSizeRowsMode::AllCells;
 			this->matrixView->BackgroundColor = System::Drawing::Color::White;
+			this->matrixView->BorderStyle = System::Windows::Forms::BorderStyle::None;
+			this->matrixView->CellBorderStyle = System::Windows::Forms::DataGridViewCellBorderStyle::None;
 			this->matrixView->ColumnHeadersBorderStyle = System::Windows::Forms::DataGridViewHeaderBorderStyle::None;
-			dataGridViewCellStyle5->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
-			dataGridViewCellStyle5->BackColor = System::Drawing::SystemColors::Control;
-			dataGridViewCellStyle5->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Regular,
+			dataGridViewCellStyle1->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
+			dataGridViewCellStyle1->BackColor = System::Drawing::SystemColors::Control;
+			dataGridViewCellStyle1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Regular,
 				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(204)));
-			dataGridViewCellStyle5->ForeColor = System::Drawing::SystemColors::WindowText;
-			dataGridViewCellStyle5->SelectionBackColor = System::Drawing::SystemColors::Highlight;
-			dataGridViewCellStyle5->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
-			dataGridViewCellStyle5->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
-			this->matrixView->ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+			dataGridViewCellStyle1->ForeColor = System::Drawing::SystemColors::WindowText;
+			dataGridViewCellStyle1->SelectionBackColor = System::Drawing::SystemColors::Highlight;
+			dataGridViewCellStyle1->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
+			dataGridViewCellStyle1->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
+			this->matrixView->ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
 			this->matrixView->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
 			this->matrixView->ColumnHeadersVisible = false;
-			dataGridViewCellStyle6->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
-			dataGridViewCellStyle6->BackColor = System::Drawing::SystemColors::Window;
-			dataGridViewCellStyle6->Font = (gcnew System::Drawing::Font(L"Segoe UI", 10));
-			dataGridViewCellStyle6->ForeColor = System::Drawing::SystemColors::ControlText;
-			dataGridViewCellStyle6->SelectionBackColor = System::Drawing::SystemColors::Highlight;
-			dataGridViewCellStyle6->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
-			dataGridViewCellStyle6->WrapMode = System::Windows::Forms::DataGridViewTriState::False;
-			this->matrixView->DefaultCellStyle = dataGridViewCellStyle6;
+			dataGridViewCellStyle2->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
+			dataGridViewCellStyle2->BackColor = System::Drawing::SystemColors::Window;
+			dataGridViewCellStyle2->Font = (gcnew System::Drawing::Font(L"Segoe UI", 10));
+			dataGridViewCellStyle2->ForeColor = System::Drawing::SystemColors::ControlText;
+			dataGridViewCellStyle2->SelectionBackColor = System::Drawing::SystemColors::Highlight;
+			dataGridViewCellStyle2->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
+			dataGridViewCellStyle2->WrapMode = System::Windows::Forms::DataGridViewTriState::False;
+			this->matrixView->DefaultCellStyle = dataGridViewCellStyle2;
 			this->matrixView->Enabled = false;
 			this->matrixView->Location = System::Drawing::Point(47, 107);
 			this->matrixView->Margin = System::Windows::Forms::Padding(2);
@@ -620,18 +637,61 @@ namespace Coursach {
 			this->matrixView->RowHeadersVisible = false;
 			this->matrixView->ScrollBars = System::Windows::Forms::ScrollBars::None;
 			this->matrixView->ShowEditingIcon = false;
-			this->matrixView->Size = System::Drawing::Size(276, 235);
+			this->matrixView->Size = System::Drawing::Size(370, 235);
 			this->matrixView->TabIndex = 25;
 			// 
 			// secondMatrixPanel
 			// 
 			this->secondMatrixPanel->Controls->Add(this->matrixView2);
 			this->secondMatrixPanel->Controls->Add(this->label6);
-			this->secondMatrixPanel->Location = System::Drawing::Point(328, 87);
+			this->secondMatrixPanel->Location = System::Drawing::Point(422, 87);
 			this->secondMatrixPanel->Name = L"secondMatrixPanel";
-			this->secondMatrixPanel->Size = System::Drawing::Size(452, 255);
+			this->secondMatrixPanel->Size = System::Drawing::Size(358, 255);
 			this->secondMatrixPanel->TabIndex = 35;
 			this->secondMatrixPanel->Visible = false;
+			// 
+			// matrixView2
+			// 
+			this->matrixView2->AllowUserToAddRows = false;
+			this->matrixView2->AllowUserToDeleteRows = false;
+			this->matrixView2->AllowUserToResizeColumns = false;
+			this->matrixView2->AllowUserToResizeRows = false;
+			this->matrixView2->AutoSizeColumnsMode = System::Windows::Forms::DataGridViewAutoSizeColumnsMode::AllCells;
+			this->matrixView2->AutoSizeRowsMode = System::Windows::Forms::DataGridViewAutoSizeRowsMode::AllCells;
+			this->matrixView2->BackgroundColor = System::Drawing::Color::White;
+			this->matrixView2->BorderStyle = System::Windows::Forms::BorderStyle::None;
+			this->matrixView2->CellBorderStyle = System::Windows::Forms::DataGridViewCellBorderStyle::None;
+			this->matrixView2->ColumnHeadersBorderStyle = System::Windows::Forms::DataGridViewHeaderBorderStyle::None;
+			dataGridViewCellStyle3->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
+			dataGridViewCellStyle3->BackColor = System::Drawing::SystemColors::Control;
+			dataGridViewCellStyle3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Regular,
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(204)));
+			dataGridViewCellStyle3->ForeColor = System::Drawing::SystemColors::WindowText;
+			dataGridViewCellStyle3->SelectionBackColor = System::Drawing::SystemColors::Highlight;
+			dataGridViewCellStyle3->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
+			dataGridViewCellStyle3->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
+			this->matrixView2->ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+			this->matrixView2->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
+			this->matrixView2->ColumnHeadersVisible = false;
+			dataGridViewCellStyle4->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
+			dataGridViewCellStyle4->BackColor = System::Drawing::SystemColors::Window;
+			dataGridViewCellStyle4->Font = (gcnew System::Drawing::Font(L"Segoe UI", 10));
+			dataGridViewCellStyle4->ForeColor = System::Drawing::SystemColors::ControlText;
+			dataGridViewCellStyle4->SelectionBackColor = System::Drawing::SystemColors::Highlight;
+			dataGridViewCellStyle4->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
+			dataGridViewCellStyle4->WrapMode = System::Windows::Forms::DataGridViewTriState::False;
+			this->matrixView2->DefaultCellStyle = dataGridViewCellStyle4;
+			this->matrixView2->Dock = System::Windows::Forms::DockStyle::Fill;
+			this->matrixView2->Enabled = false;
+			this->matrixView2->Location = System::Drawing::Point(0, 20);
+			this->matrixView2->Margin = System::Windows::Forms::Padding(2);
+			this->matrixView2->Name = L"matrixView2";
+			this->matrixView2->ReadOnly = true;
+			this->matrixView2->RowHeadersVisible = false;
+			this->matrixView2->ScrollBars = System::Windows::Forms::ScrollBars::None;
+			this->matrixView2->ShowEditingIcon = false;
+			this->matrixView2->Size = System::Drawing::Size(358, 235);
+			this->matrixView2->TabIndex = 35;
 			// 
 			// label6
 			// 
@@ -643,59 +703,6 @@ namespace Coursach {
 			this->label6->Size = System::Drawing::Size(161, 20);
 			this->label6->TabIndex = 34;
 			this->label6->Text = L"Изменённая матрица";
-			// 
-			// matrixView2
-			// 
-			this->matrixView2->AllowUserToAddRows = false;
-			this->matrixView2->AllowUserToDeleteRows = false;
-			this->matrixView2->AllowUserToResizeColumns = false;
-			this->matrixView2->AllowUserToResizeRows = false;
-			this->matrixView2->AutoSizeColumnsMode = System::Windows::Forms::DataGridViewAutoSizeColumnsMode::AllCells;
-			this->matrixView2->AutoSizeRowsMode = System::Windows::Forms::DataGridViewAutoSizeRowsMode::AllCells;
-			this->matrixView2->BackgroundColor = System::Drawing::Color::White;
-			this->matrixView2->ColumnHeadersBorderStyle = System::Windows::Forms::DataGridViewHeaderBorderStyle::None;
-			dataGridViewCellStyle7->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
-			dataGridViewCellStyle7->BackColor = System::Drawing::SystemColors::Control;
-			dataGridViewCellStyle7->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Regular,
-				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(204)));
-			dataGridViewCellStyle7->ForeColor = System::Drawing::SystemColors::WindowText;
-			dataGridViewCellStyle7->SelectionBackColor = System::Drawing::SystemColors::Highlight;
-			dataGridViewCellStyle7->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
-			dataGridViewCellStyle7->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
-			this->matrixView2->ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
-			this->matrixView2->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			this->matrixView2->ColumnHeadersVisible = false;
-			dataGridViewCellStyle8->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
-			dataGridViewCellStyle8->BackColor = System::Drawing::SystemColors::Window;
-			dataGridViewCellStyle8->Font = (gcnew System::Drawing::Font(L"Segoe UI", 10));
-			dataGridViewCellStyle8->ForeColor = System::Drawing::SystemColors::ControlText;
-			dataGridViewCellStyle8->SelectionBackColor = System::Drawing::SystemColors::Highlight;
-			dataGridViewCellStyle8->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
-			dataGridViewCellStyle8->WrapMode = System::Windows::Forms::DataGridViewTriState::False;
-			this->matrixView2->DefaultCellStyle = dataGridViewCellStyle8;
-			this->matrixView2->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->matrixView2->Enabled = false;
-			this->matrixView2->Location = System::Drawing::Point(0, 20);
-			this->matrixView2->Margin = System::Windows::Forms::Padding(2);
-			this->matrixView2->Name = L"matrixView2";
-			this->matrixView2->ReadOnly = true;
-			this->matrixView2->RowHeadersVisible = false;
-			this->matrixView2->ScrollBars = System::Windows::Forms::ScrollBars::None;
-			this->matrixView2->ShowEditingIcon = false;
-			this->matrixView2->Size = System::Drawing::Size(452, 235);
-			this->matrixView2->TabIndex = 35;
-			// 
-			// richTextBox3
-			// 
-			this->richTextBox3->BorderStyle = System::Windows::Forms::BorderStyle::None;
-			this->richTextBox3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(204)));
-			this->richTextBox3->Location = System::Drawing::Point(46, 407);
-			this->richTextBox3->Name = L"richTextBox3";
-			this->richTextBox3->Size = System::Drawing::Size(258, 40);
-			this->richTextBox3->TabIndex = 45;
-			this->richTextBox3->Text = L"*Результаты действий при необходимости округляются до третьего знака, а слишком б"
-				L"ольшие числа не влезут в форму, сори";
 			// 
 			// Lab3
 			// 
@@ -750,6 +757,11 @@ private: int getFillMethod();
 */
 private: int getMatrixDegree();
 /**
+* Проверка, выбран ли порядок матрицы
+* если да, то функция возвращает порядок
+*/
+//private: int getMatrixTrans();
+/**
 * Проверка введённого юзером числа
 * Принимает текст поля ввода
 */
@@ -797,9 +809,72 @@ private: void fillArrSpiral();
 * Заполнение матрицы змейкой
 */
 private: void fillArrSnake();
+
+
+//Замена четвертей матрицы
+
+//Набор функций для схемы перестановки блоков 
+
+
 /**
-     * сортировка вставками заданного массива
-     * @param  {*p} - указатель на массив, в который будут записываться значения
+	 * копирование первой четверти матрицы во временный массив
+	 * нужно для того, чтобы во время замены четвертей матрицы по кругу не потерялся один из кусков
+*/
+void copyFirstQuarter();
+/**
+	* вставка скопированной части на своё место в правый верхний уго исходной матрицы
+*/
+void pasteFirstQuarter();
+
+/**
+	* функция свапа левой и правой четвертей
+	* @param {minI} - начиная с какого номера строки, отсчитатьчетверть, которую нужно поменять местами с соседней
+*/
+void setElsLeftToRight(int minI);
+
+/**
+	* функция свапа верхней и нижней четвертей
+	* @param {minJ} - начиная с какого номера столбца, отсчитатьчетверть, которую нужно поменять местами с соседней
+*/
+void setElsUpToDown(int minJ);
+
+/**
+	* функция свапа по-диагонали
+	* верхний левый угол с правым нижним
+*/
+void setElsDiagonalLeftToRight();
+/**
+	* функция свапа по-диагонали
+	* верхний правый угол с левым нижним
+*/
+void setElsDiagonalRightToLeft();
+
+
+
+/**
+	 * замена четвертей матрицы по кругу
+	 * копируется верхняя левая четверть, потом меняются местами верхняя левая с нижней левой
+	 * потом нижняя левая с нижней правой
+	 * потом нижняя правая с верхней правой
+	 * и, наконец, вставка в верхнюю правую четверть сохранённого куска матрицы
+*/
+void roundShift();
+
+/**
+	* замена четвертей матрицы по-диагонали
+*/
+void diagonalShift();
+   /**
+		* замена верхней половины матрицы на нижнюю и обратно
+   */
+void verticalShift();
+/**
+	* замена левой половины матрицы на правую и обратно
+*/
+void horizontalShift();
+/**
+ сортировка вставками заданного массива
+ @param  {*p} - указатель на массив, в который будутзаписыватьсязначения
 */
 void insertSort();
 /**
@@ -843,5 +918,9 @@ private: System::Void btnDiv_Click(System::Object^ sender, System::EventArgs^ e)
 
 
 private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e);
+private: System::Void quotersOptionsCombo_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
+	if (btnQuotersChange->Visible == false) btnQuotersChange->Visible = true;
+}
+private: System::Void btnQuotersChange_Click(System::Object^ sender, System::EventArgs^ e);
 };
 }

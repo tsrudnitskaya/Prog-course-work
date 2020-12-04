@@ -1,16 +1,23 @@
 #include "Lab3.h"
 
-float** pArr;
+float** pArr, ** pArrTemp;
 int arrayWidth;
 int fillMethod;
 int matrixMin, matrixMax, matrixCols, matrixRows;
 int errors = 0;
 
+System::Void Coursach::Lab3::btnCloseForm_Click_1(System::Object^ sender, System::EventArgs^ e)
+{
+    this->Close();
+}
 void Coursach::Lab3::initialise()
 {
     pArr = new float* [arrayWidth];
+    pArrTemp = new float* [arrayWidth / 2];
     for (int i = 0; i < arrayWidth; i++)
         pArr[i] = new float[arrayWidth];
+    for (int i = 0; i < arrayWidth / 2; i++)
+        pArrTemp[i] = new float [arrayWidth / 2];
     matrixMin = 0;
     matrixMax = arrayWidth * arrayWidth;
     matrixCols = arrayWidth;
@@ -139,14 +146,101 @@ void Coursach::Lab3::fillArrSnake()
         counter++;
     }
 }
+//Набор функций для схемы перестановки блоков 
 
-/**
-     * сортировка вставками заданного массива
-*/
-void Coursach::Lab3::insertSort()
-{   
-
+void Coursach::Lab3::copyFirstQuarter() {
+    for (int i = 0; i < arrayWidth / 2; i++)
+        for (int j = 0; j < arrayWidth / 2; j++)
+            *(pArrTemp[i] + j) = *(pArr[i] + j);
 }
+
+void Coursach::Lab3::pasteFirstQuarter() {
+    for (int i = 0; i < arrayWidth / 2; i++)
+        for (int j = 0; j < arrayWidth / 2; j++)
+            std::swap(*(pArrTemp[i] + j), *(pArr[i] + j + arrayWidth / 2));
+}
+
+void Coursach::Lab3::setElsLeftToRight(int minI) {
+    for (int i = minI; i < minI + arrayWidth / 2; i++)
+        for (int j = 0; j < arrayWidth / 2; j++)
+            std::swap(*(pArr[i] + j), *(pArr[i] + j + arrayWidth / 2));
+}
+
+void Coursach::Lab3::setElsUpToDown(int minJ) {
+    for (int i = 0; i < arrayWidth / 2; i++)
+        for (int j = minJ; j < minJ + arrayWidth / 2; j++)
+            std::swap(*(pArr[i] + j), *(pArr[i + arrayWidth / 2] + j));
+}
+
+void Coursach::Lab3::setElsDiagonalLeftToRight() {
+    for (int i = 0; i < arrayWidth / 2; i++)
+        for (int j = 0; j < arrayWidth / 2; j++)
+            std::swap(*(pArr[i] + j), *(pArr[i + arrayWidth / 2] + j + arrayWidth / 2));
+}
+
+
+void Coursach::Lab3::setElsDiagonalRightToLeft() {
+    for (int i = 0; i < arrayWidth / 2; i++)
+        for (int j = arrayWidth / 2; j < arrayWidth; j++)
+            std::swap(*(pArr[i] + j), *(pArr[i + arrayWidth / 2] + j - arrayWidth / 2));
+}
+
+
+void Coursach::Lab3::roundShift()
+{
+    copyFirstQuarter();
+    setElsUpToDown(0);
+    setElsLeftToRight(arrayWidth / 2);
+    setElsUpToDown(arrayWidth / 2);
+    pasteFirstQuarter();
+    showArray(1);
+    secondMatrixPanel->Visible = true;
+}
+
+void Coursach::Lab3::diagonalShift()
+{
+    setElsDiagonalLeftToRight();
+    setElsDiagonalRightToLeft();
+    showArray(1);
+    secondMatrixPanel->Visible = true;
+}
+
+void Coursach::Lab3::verticalShift()
+{
+    setElsUpToDown(0);
+    setElsUpToDown(arrayWidth / 2);
+    showArray(1);
+    secondMatrixPanel->Visible = true;
+}
+
+void Coursach::Lab3::horizontalShift()
+{
+    setElsLeftToRight(0);
+    setElsLeftToRight(arrayWidth / 2);
+    showArray(1);
+    secondMatrixPanel->Visible = true;
+}
+
+System::Void Coursach::Lab3::btnQuotersChange_Click(System::Object^ sender, System::EventArgs^ e)
+{
+    prepareMatrix();
+    switch (quotersOptionsCombo->SelectedIndex) {
+    case 0:
+        roundShift();
+        break;
+    case 1:
+        diagonalShift();
+        break;
+    case 2:
+        verticalShift();
+        break;
+    case 3:
+        horizontalShift();
+        break;
+        return;
+    }
+}
+
 float Coursach::Lab3::checkUserNum(String^ text)
 {
     float num;
@@ -163,7 +257,7 @@ void Coursach::Lab3::addition(float num){
 
     for (int i = 0; i < arrayWidth; i++) {
         for (int j = 0; j < arrayWidth; j++)
-            *(pArr[i] + j) += num;
+            *(pArr[i] + j) = round(*(pArr[i] + j) + num * 1000) / 1000;
     }
 }
 
@@ -171,7 +265,7 @@ void Coursach::Lab3::subtraction(float num)
 {
     for (int i = 0; i < arrayWidth; i++) {
         for (int j = 0; j < arrayWidth; j++)
-            *(pArr[i] + j) -= num;
+            *(pArr[i] + j) = round(*(pArr[i] + j) - num * 1000) / 1000;
     }
 }
 
@@ -179,7 +273,7 @@ void Coursach::Lab3::multiple(float num)
 {
     for (int i = 0; i < arrayWidth; i++) {
         for (int j = 0; j < arrayWidth; j++)
-            *(pArr[i] + j) *= num;
+            *(pArr[i] + j) = round(*(pArr[i] + j) * num * 1000) / 1000;
     }
 }
 
@@ -196,7 +290,6 @@ System::Void Coursach::Lab3::btnAdd_Click(System::Object^ sender, System::EventA
     prepareMatrix();
     float num = checkUserNum(textBoxNum->Text);
     if (!errors) {
-        num = round(num * 1000) / 1000;
         addition(num);
         showArray(1);
         secondMatrixPanel->Visible = true;
@@ -239,10 +332,6 @@ System::Void Coursach::Lab3::btnDiv_Click(System::Object^ sender, System::EventA
     }
     else return;
 }
-System::Void Coursach::Lab3::btnCloseForm_Click_1(System::Object^ sender, System::EventArgs^ e)
-{
-	this->Close();
-}
 
 System::Void Coursach::Lab3::btnGetArray_Click(System::Object^ sender, System::EventArgs^ e)
 {
@@ -259,12 +348,19 @@ System::Void Coursach::Lab3::btnGetArray_Click(System::Object^ sender, System::E
         selectScheme();
     }
 }
+
+
+void Coursach::Lab3::insertSort()
+{
+
+}
 System::Void Coursach::Lab3::btnSort_Click(System::Object^ sender, System::EventArgs^ e)
 {
     prepareMatrix();
     insertSort();
     showArray(1);
 }
+
 System::Void Coursach::Lab3::button1_Click(System::Object^ sender, System::EventArgs^ e)
 {
     prepareMatrix();
