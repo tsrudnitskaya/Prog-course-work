@@ -44,3 +44,12 @@ void Coursach::MainForm::welcomeHide()
 		welcomePanel->Visible = false;
 	}
 }
+
+System::Void Coursach::MainForm::btnLab4_Click(System::Object^ sender, System::EventArgs^ e)
+{
+	lab4^ form = gcnew lab4();
+	form->MdiParent = this;
+	form->Dock = System::Windows::Forms::DockStyle::Fill;
+	form->Show();
+	welcomeHide();
+}

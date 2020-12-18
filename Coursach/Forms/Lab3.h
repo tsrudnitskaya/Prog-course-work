@@ -77,8 +77,8 @@ namespace Coursach {
 	private: System::Windows::Forms::Label^ label7;
 	private: System::Windows::Forms::TextBox^ textBoxNum;
 	private: System::Windows::Forms::RichTextBox^ richTextBox2;
-	private: System::Windows::Forms::Button^ button1;
-	private: System::Windows::Forms::Label^ label8;
+
+
 	private: System::Windows::Forms::DataGridView^ matrixView2;
 	private: System::Windows::Forms::RichTextBox^ richTextBox3;
 
@@ -168,8 +168,6 @@ namespace Coursach {
 			this->welcomePanel = (gcnew System::Windows::Forms::Panel());
 			this->workPanel = (gcnew System::Windows::Forms::Panel());
 			this->richTextBox3 = (gcnew System::Windows::Forms::RichTextBox());
-			this->label8 = (gcnew System::Windows::Forms::Label());
-			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->richTextBox2 = (gcnew System::Windows::Forms::RichTextBox());
 			this->btnDiv = (gcnew System::Windows::Forms::Button());
 			this->btnMtpl = (gcnew System::Windows::Forms::Button());
@@ -359,8 +357,6 @@ namespace Coursach {
 			// 
 			this->workPanel->BackColor = System::Drawing::Color::White;
 			this->workPanel->Controls->Add(this->richTextBox3);
-			this->workPanel->Controls->Add(this->label8);
-			this->workPanel->Controls->Add(this->button1);
 			this->workPanel->Controls->Add(this->richTextBox2);
 			this->workPanel->Controls->Add(this->btnDiv);
 			this->workPanel->Controls->Add(this->btnMtpl);
@@ -387,39 +383,12 @@ namespace Coursach {
 			this->richTextBox3->BorderStyle = System::Windows::Forms::BorderStyle::None;
 			this->richTextBox3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->richTextBox3->Location = System::Drawing::Point(46, 407);
+			this->richTextBox3->Location = System::Drawing::Point(289, 368);
 			this->richTextBox3->Name = L"richTextBox3";
 			this->richTextBox3->Size = System::Drawing::Size(258, 40);
 			this->richTextBox3->TabIndex = 45;
 			this->richTextBox3->Text = L"*–езультаты действий при необходимости округл€ютс€ до третьего знака, а слишком б"
 				L"ольшие числа не влезут в форму, сори";
-			// 
-			// label8
-			// 
-			this->label8->AutoSize = true;
-			this->label8->Location = System::Drawing::Point(607, 375);
-			this->label8->Name = L"label8";
-			this->label8->Size = System::Drawing::Size(35, 13);
-			this->label8->TabIndex = 44;
-			this->label8->Text = L"label8";
-			// 
-			// button1
-			// 
-			this->button1->AutoSize = true;
-			this->button1->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(1)), static_cast<System::Int32>(static_cast<System::Byte>(142)),
-				static_cast<System::Int32>(static_cast<System::Byte>(237)));
-			this->button1->FlatAppearance->BorderSize = 0;
-			this->button1->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->button1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(204)));
-			this->button1->ForeColor = System::Drawing::Color::White;
-			this->button1->Location = System::Drawing::Point(704, 369);
-			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(74, 35);
-			this->button1->TabIndex = 43;
-			this->button1->Text = L"тест";
-			this->button1->UseVisualStyleBackColor = false;
-			this->button1->Click += gcnew System::EventHandler(this, &Lab3::button1_Click);
 			// 
 			// richTextBox2
 			// 
@@ -514,9 +483,9 @@ namespace Coursach {
 			this->label7->Font = (gcnew System::Drawing::Font(L"Segoe UI", 10));
 			this->label7->Location = System::Drawing::Point(41, 346);
 			this->label7->Name = L"label7";
-			this->label7->Size = System::Drawing::Size(260, 19);
+			this->label7->Size = System::Drawing::Size(243, 19);
 			this->label7->TabIndex = 37;
-			this->label7->Text = L"¬ведите число и выберите действие (*):";
+			this->label7->Text = L"¬ведите число и выберите действие ";
 			// 
 			// textBoxNum
 			// 
@@ -546,7 +515,7 @@ namespace Coursach {
 			this->btnSort->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->btnSort->ForeColor = System::Drawing::Color::White;
-			this->btnSort->Location = System::Drawing::Point(328, 375);
+			this->btnSort->Location = System::Drawing::Point(604, 369);
 			this->btnSort->Name = L"btnSort";
 			this->btnSort->Size = System::Drawing::Size(176, 35);
 			this->btnSort->TabIndex = 32;
@@ -916,8 +885,6 @@ private: System::Void btnDiv_Click(System::Object^ sender, System::EventArgs^ e)
 
 
 
-
-private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e);
 private: System::Void quotersOptionsCombo_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
 	if (btnQuotersChange->Visible == false) btnQuotersChange->Visible = true;
 }

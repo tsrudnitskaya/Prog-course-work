@@ -7,7 +7,9 @@
 #include <cmath>
 #include <string>
 #include <thread>
-
+#include "windows.h"
+#include <vector>
+#include <msclr\marshal_cppstd.h>
 using namespace std::chrono;
 
 

@@ -81,6 +81,7 @@ void Coursach::Lab3::showArray(int matrixNum)
     for (int i = 0; i < arrayWidth; i++)
         for (int j = 0; j < arrayWidth; j++)
             showNumber(i, j, matrixNum);
+    if (matrixView2->Visible == false) matrixView2->Visible = true;
 }
 void Coursach::Lab3::showNumber(int i, int j, int matrixNum)
 {
@@ -132,6 +133,7 @@ void Coursach::Lab3::fillArrSnake()
         //*(pArr[i] + j) = getRandomNumber(matrixMin, matrixMax);
         *(pArr[i] + j) = counter;
         showNumber(i, j, 0);
+        //Sleep(100);
         //проверяем, если столбец нулевой или чётный, и текущий элемент ещё не достиг низа, 
         //то передвигаемся вниз
         if (j % 2 == 0 && i < arrayWidth - 1)
@@ -352,28 +354,19 @@ System::Void Coursach::Lab3::btnGetArray_Click(System::Object^ sender, System::E
 
 void Coursach::Lab3::insertSort()
 {
-
+    for (int l = 0; l < arrayWidth; l++)
+        for (int k = 0; k < arrayWidth; k++)
+            for (int i = 0; i < arrayWidth - 1; i++)
+                for (int j = 0; j < arrayWidth - 1; j++) {
+                   if (j + 1 == arrayWidth && *(pArr[i] + j) > *(pArr[i + 1]))
+                            std::swap(*(pArr[i] + j), *(pArr[i + 1]));
+                        else if (*(pArr[i] + j) > *(pArr[i] + j + 1))
+                            std::swap(*(pArr[i] + j), *(pArr[i] + j + 1));
+                }
 }
 System::Void Coursach::Lab3::btnSort_Click(System::Object^ sender, System::EventArgs^ e)
 {
     prepareMatrix();
     insertSort();
     showArray(1);
-}
-
-System::Void Coursach::Lab3::button1_Click(System::Object^ sender, System::EventArgs^ e)
-{
-    prepareMatrix();
-   // for (int i = 0; i < arrayWidth; i++)
-        /*float* p = (float*)pArr;
-        String^ sdfs = p[i].ToString();*/
-
-        //matrixView2->Rows[i]->Cells[j]->Value = pArr[i][j];
-
-        //for (int j = 0; j < arrayWidth; j++) {
-
-        //}
-    
-    //String^ sdfs = **pArr[0].ToString();
-    //label8->Text = sdfs;
 }

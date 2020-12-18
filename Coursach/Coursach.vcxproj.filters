@@ -33,6 +33,9 @@
     <ClCompile Include="Sources\Lab3-functions.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Forms\lab4.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Forms\MainForm.h">
@@ -52,6 +55,9 @@
     </ClInclude>
     <ClInclude Include="Sources\Lab3-functions.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Forms\lab4.h">
+      <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
