@@ -9,6 +9,7 @@ namespace Coursach {
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
+	using namespace System::IO;
 
 	/// <summary>
 	/// Сводка для lab4
@@ -79,6 +80,9 @@ namespace Coursach {
 	private: System::Windows::Forms::Label^ label2;
 	private: System::Windows::Forms::Button^ btnFirstLetterSearch;
 	private: System::Windows::Forms::Label^ deleteSubstrLabel;
+	private: System::Windows::Forms::Button^ loadFromFile;
+	private: System::Windows::Forms::Label^ label5;
+	private: System::Windows::Forms::OpenFileDialog^ openFileDialog1;
 
 
 
@@ -100,6 +104,8 @@ namespace Coursach {
 			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(lab4::typeid));
 			this->btnCloseForm = (gcnew System::Windows::Forms::Button());
 			this->controlsPanel = (gcnew System::Windows::Forms::Panel());
+			this->loadFromFile = (gcnew System::Windows::Forms::Button());
+			this->label5 = (gcnew System::Windows::Forms::Label());
 			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
 			this->btnGetText = (gcnew System::Windows::Forms::Button());
 			this->errPanel = (gcnew System::Windows::Forms::Panel());
@@ -108,6 +114,7 @@ namespace Coursach {
 			this->errorLabel1 = (gcnew System::Windows::Forms::Label());
 			this->welcomePanel = (gcnew System::Windows::Forms::Panel());
 			this->workPanel = (gcnew System::Windows::Forms::Panel());
+			this->deleteSubstrLabel = (gcnew System::Windows::Forms::Label());
 			this->searchResultsPanel = (gcnew System::Windows::Forms::Panel());
 			this->label8 = (gcnew System::Windows::Forms::Label());
 			this->searchIndexesLabel = (gcnew System::Windows::Forms::Label());
@@ -125,7 +132,7 @@ namespace Coursach {
 			this->correctText = (gcnew System::Windows::Forms::Label());
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->richTextBox1 = (gcnew System::Windows::Forms::RichTextBox());
-			this->deleteSubstrLabel = (gcnew System::Windows::Forms::Label());
+			this->openFileDialog1 = (gcnew System::Windows::Forms::OpenFileDialog());
 			this->controlsPanel->SuspendLayout();
 			this->errPanel->SuspendLayout();
 			this->errorPanel->SuspendLayout();
@@ -150,14 +157,43 @@ namespace Coursach {
 			// controlsPanel
 			// 
 			this->controlsPanel->BackColor = System::Drawing::Color::White;
+			this->controlsPanel->Controls->Add(this->loadFromFile);
+			this->controlsPanel->Controls->Add(this->label5);
 			this->controlsPanel->Controls->Add(this->textBox1);
 			this->controlsPanel->Controls->Add(this->btnGetText);
 			this->controlsPanel->Controls->Add(this->btnCloseForm);
 			this->controlsPanel->Dock = System::Windows::Forms::DockStyle::Top;
 			this->controlsPanel->Location = System::Drawing::Point(0, 0);
 			this->controlsPanel->Name = L"controlsPanel";
-			this->controlsPanel->Size = System::Drawing::Size(808, 70);
+			this->controlsPanel->Size = System::Drawing::Size(808, 71);
 			this->controlsPanel->TabIndex = 36;
+			// 
+			// loadFromFile
+			// 
+			this->loadFromFile->BackColor = System::Drawing::Color::Orange;
+			this->loadFromFile->FlatAppearance->BorderColor = System::Drawing::Color::Orange;
+			this->loadFromFile->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->loadFromFile->ForeColor = System::Drawing::Color::White;
+			this->loadFromFile->ImageAlign = System::Drawing::ContentAlignment::MiddleLeft;
+			this->loadFromFile->Location = System::Drawing::Point(625, 18);
+			this->loadFromFile->Margin = System::Windows::Forms::Padding(2);
+			this->loadFromFile->Name = L"loadFromFile";
+			this->loadFromFile->Size = System::Drawing::Size(148, 32);
+			this->loadFromFile->TabIndex = 45;
+			this->loadFromFile->Text = L"Загрузить из файла";
+			this->loadFromFile->UseVisualStyleBackColor = false;
+			this->loadFromFile->Click += gcnew System::EventHandler(this, &lab4::loadFromFile_Click);
+			// 
+			// label5
+			// 
+			this->label5->AutoSize = true;
+			this->label5->Font = (gcnew System::Drawing::Font(L"Segoe UI", 10, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->label5->Location = System::Drawing::Point(588, 25);
+			this->label5->Name = L"label5";
+			this->label5->Size = System::Drawing::Size(32, 19);
+			this->label5->TabIndex = 44;
+			this->label5->Text = L"или";
 			// 
 			// textBox1
 			// 
@@ -165,7 +201,7 @@ namespace Coursach {
 				static_cast<System::Byte>(204)));
 			this->textBox1->Location = System::Drawing::Point(46, 25);
 			this->textBox1->Name = L"textBox1";
-			this->textBox1->Size = System::Drawing::Size(571, 22);
+			this->textBox1->Size = System::Drawing::Size(458, 22);
 			this->textBox1->TabIndex = 27;
 			this->textBox1->Text = L"d sd lkj kSDKk...  enegh ..jkljek,, eneghq pssdfp.";
 			// 
@@ -176,7 +212,7 @@ namespace Coursach {
 			this->btnGetText->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->btnGetText->ForeColor = System::Drawing::Color::White;
 			this->btnGetText->ImageAlign = System::Drawing::ContentAlignment::MiddleLeft;
-			this->btnGetText->Location = System::Drawing::Point(672, 18);
+			this->btnGetText->Location = System::Drawing::Point(517, 18);
 			this->btnGetText->Margin = System::Windows::Forms::Padding(2);
 			this->btnGetText->Name = L"btnGetText";
 			this->btnGetText->Size = System::Drawing::Size(66, 32);
@@ -230,9 +266,9 @@ namespace Coursach {
 			this->welcomePanel->Controls->Add(this->label1);
 			this->welcomePanel->Controls->Add(this->richTextBox1);
 			this->welcomePanel->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->welcomePanel->Location = System::Drawing::Point(0, 70);
+			this->welcomePanel->Location = System::Drawing::Point(0, 71);
 			this->welcomePanel->Name = L"welcomePanel";
-			this->welcomePanel->Size = System::Drawing::Size(808, 425);
+			this->welcomePanel->Size = System::Drawing::Size(808, 424);
 			this->welcomePanel->TabIndex = 38;
 			// 
 			// workPanel
@@ -254,9 +290,20 @@ namespace Coursach {
 			this->workPanel->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->workPanel->Location = System::Drawing::Point(0, 0);
 			this->workPanel->Name = L"workPanel";
-			this->workPanel->Size = System::Drawing::Size(808, 425);
+			this->workPanel->Size = System::Drawing::Size(808, 424);
 			this->workPanel->TabIndex = 2;
 			this->workPanel->Visible = false;
+			// 
+			// deleteSubstrLabel
+			// 
+			this->deleteSubstrLabel->AutoSize = true;
+			this->deleteSubstrLabel->Font = (gcnew System::Drawing::Font(L"Segoe UI", 10, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->deleteSubstrLabel->Location = System::Drawing::Point(283, 218);
+			this->deleteSubstrLabel->Name = L"deleteSubstrLabel";
+			this->deleteSubstrLabel->Size = System::Drawing::Size(0, 19);
+			this->deleteSubstrLabel->TabIndex = 47;
+			this->deleteSubstrLabel->Visible = false;
 			// 
 			// searchResultsPanel
 			// 
@@ -434,6 +481,7 @@ namespace Coursach {
 			this->btnFirstLetterSearch->TabIndex = 31;
 			this->btnFirstLetterSearch->Text = L"Вывести";
 			this->btnFirstLetterSearch->UseVisualStyleBackColor = false;
+			this->btnFirstLetterSearch->Click += gcnew System::EventHandler(this, &lab4::btnFirstLetterSearch_Click);
 			// 
 			// correctText
 			// 
@@ -470,16 +518,9 @@ namespace Coursach {
 				L"у\nили выберите текстовый файл и нажмите OK.\nПри загрузке текста он сразу будет о"
 				L"ттипографирован.";
 			// 
-			// deleteSubstrLabel
+			// openFileDialog1
 			// 
-			this->deleteSubstrLabel->AutoSize = true;
-			this->deleteSubstrLabel->Font = (gcnew System::Drawing::Font(L"Segoe UI", 10, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(204)));
-			this->deleteSubstrLabel->Location = System::Drawing::Point(283, 218);
-			this->deleteSubstrLabel->Name = L"deleteSubstrLabel";
-			this->deleteSubstrLabel->Size = System::Drawing::Size(0, 19);
-			this->deleteSubstrLabel->TabIndex = 47;
-			this->deleteSubstrLabel->Visible = false;
+			this->openFileDialog1->FileName = L"openFileDialog1";
 			// 
 			// lab4
 			// 
@@ -526,6 +567,8 @@ namespace Coursach {
 		int knmSearch(char * subStr);
 		//удалить все найденные подстроки
 		void delSubStr(char *subStr, int counter);
+		//найти все слова, в которых первая буква повторяется
+		void firstLetterSearch();
 
 		//закрыть форму
 private: System::Void btnCloseForm_Click(System::Object^ sender, System::EventArgs^ e);
@@ -537,5 +580,9 @@ private: System::Void bruteForceSearchBtn_Click(System::Object^ sender, System::
 private: System::Void knmSearchBtn_Click(System::Object^ sender, System::EventArgs^ e);
 	   //обработка нажатия кнопки "удалить"
 private: System::Void btnDeleteSubstr_Click(System::Object^ sender, System::EventArgs^ e);
+	   //обработка нажатия кнопки "вывести"
+private: System::Void btnFirstLetterSearch_Click(System::Object^ sender, System::EventArgs^ e);
+	   //обработка нажатия кнопки "Загрузить из файла"
+private: System::Void loadFromFile_Click(System::Object^ sender, System::EventArgs^ e);
 };
 }
