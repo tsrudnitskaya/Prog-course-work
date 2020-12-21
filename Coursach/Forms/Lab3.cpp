@@ -8,6 +8,8 @@ int errors = 0;
 
 System::Void Coursach::Lab3::btnCloseForm_Click_1(System::Object^ sender, System::EventArgs^ e)
 {
+    delete[] pArr;
+    delete[] pArrTemp;
     this->Close();
 }
 void Coursach::Lab3::initialise()
@@ -81,7 +83,7 @@ void Coursach::Lab3::showArray(int matrixNum)
     for (int i = 0; i < arrayWidth; i++)
         for (int j = 0; j < arrayWidth; j++)
             showNumber(i, j, matrixNum);
-    if (matrixView2->Visible == false) matrixView2->Visible = true;
+    if (secondMatrixPanel->Visible == false) matrixView2->Visible = true;
 }
 void Coursach::Lab3::showNumber(int i, int j, int matrixNum)
 {
@@ -259,7 +261,7 @@ void Coursach::Lab3::addition(float num){
 
     for (int i = 0; i < arrayWidth; i++) {
         for (int j = 0; j < arrayWidth; j++)
-            *(pArr[i] + j) = round(*(pArr[i] + j) + num * 1000) / 1000;
+            *(pArr[i] + j) = *(pArr[i] + j) + num;
     }
 }
 
@@ -267,7 +269,7 @@ void Coursach::Lab3::subtraction(float num)
 {
     for (int i = 0; i < arrayWidth; i++) {
         for (int j = 0; j < arrayWidth; j++)
-            *(pArr[i] + j) = round(*(pArr[i] + j) - num * 1000) / 1000;
+            *(pArr[i] + j) = *(pArr[i] + j) - num;
     }
 }
 
@@ -354,15 +356,25 @@ System::Void Coursach::Lab3::btnGetArray_Click(System::Object^ sender, System::E
 
 void Coursach::Lab3::insertSort()
 {
-    for (int l = 0; l < arrayWidth; l++)
-        for (int k = 0; k < arrayWidth; k++)
-            for (int i = 0; i < arrayWidth - 1; i++)
-                for (int j = 0; j < arrayWidth - 1; j++) {
-                   if (j + 1 == arrayWidth && *(pArr[i] + j) > *(pArr[i + 1]))
-                            std::swap(*(pArr[i] + j), *(pArr[i + 1]));
-                        else if (*(pArr[i] + j) > *(pArr[i] + j + 1))
-                            std::swap(*(pArr[i] + j), *(pArr[i] + j + 1));
-                }
+    int i, j, k, jlast, ilast;
+    int size = arrayWidth * arrayWidth;
+    int flag;
+
+    do {
+        flag = 0;
+        for (k = 1; k < size; k++) {
+            //Вычисляем индексы текущего элемента
+            i = k / arrayWidth;
+            j = k - i * arrayWidth;
+            //Вычисляем индексы предыдущего элемента
+            ilast = (k - 1) / arrayWidth;
+            jlast = (k - 1) - ilast * arrayWidth;
+            if (*(pArr[i] + j) < *(pArr[ilast] + jlast)) {
+                std::swap(*(pArr[i] + j), *(pArr[ilast] + jlast));
+                flag = 1;
+            }
+        }
+    } while (flag);
 }
 System::Void Coursach::Lab3::btnSort_Click(System::Object^ sender, System::EventArgs^ e)
 {

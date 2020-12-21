@@ -23,7 +23,7 @@ void Coursach::lab4::delStr(int i, int len)
 
 void Coursach::lab4::showErr(String^ text)
 {
-    errorLabel1->Text += text;
+    errorLabel1->Text = text;
     errorPanel->Visible = true;
     err++;
 }
@@ -64,7 +64,7 @@ void Coursach::lab4::inputTextCorretion()
                 delStr((i + 1), 1);
         }
         //приводим char к int, чтобы посмотреть код символа
-        //если это строчная латинская буква, то меняем её на соответствующую прописную
+        //если это прописная латинская буква, то меняем её на соответствующую строчную
         else {
             int ch = static_cast<int>(str[i]);
             if (ch <= 90 && ch >= 65)

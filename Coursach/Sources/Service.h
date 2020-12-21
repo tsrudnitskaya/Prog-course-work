@@ -9,6 +9,8 @@
 #include <thread>
 #include "windows.h"
 #include <vector>
+#include "stdio.h"
+
 #include <msclr\marshal_cppstd.h>
 using namespace std::chrono;
 

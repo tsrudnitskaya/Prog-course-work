@@ -53,3 +53,12 @@ System::Void Coursach::MainForm::btnLab4_Click(System::Object^ sender, System::E
 	form->Show();
 	welcomeHide();
 }
+
+System::Void Coursach::MainForm::btnLab1_Click(System::Object^ sender, System::EventArgs^ e)
+{
+	Lab1^ form = gcnew Lab1();
+	form->MdiParent = this;
+	form->Dock = System::Windows::Forms::DockStyle::Fill;
+	form->Show();
+	welcomeHide();
+}

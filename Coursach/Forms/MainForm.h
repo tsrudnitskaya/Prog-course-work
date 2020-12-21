@@ -1,4 +1,5 @@
 #pragma once
+#include "Lab1.h"
 #include "Lab2.h"
 #include "Lab3.h"
 #include "lab4.h"
@@ -197,7 +198,6 @@ namespace Coursach {
 			this->btnLab1->BackColor = System::Drawing::Color::Transparent;
 			this->btnLab1->Cursor = System::Windows::Forms::Cursors::Hand;
 			this->btnLab1->Dock = System::Windows::Forms::DockStyle::Top;
-			this->btnLab1->Enabled = false;
 			this->btnLab1->FlatAppearance->BorderSize = 0;
 			this->btnLab1->FlatAppearance->MouseDownBackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(28)),
 				static_cast<System::Int32>(static_cast<System::Byte>(72)), static_cast<System::Int32>(static_cast<System::Byte>(131)));
@@ -213,6 +213,7 @@ namespace Coursach {
 			this->btnLab1->Text = L"Лабораторная работа 1";
 			this->btnLab1->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
 			this->btnLab1->UseVisualStyleBackColor = false;
+			this->btnLab1->Click += gcnew System::EventHandler(this, &MainForm::btnLab1_Click);
 			// 
 			// logoWrapper
 			// 
@@ -345,5 +346,6 @@ private: System::Void btnLab3_Click(System::Object^ sender, System::EventArgs^ e
 
 private: void welcomeHide();
 private: System::Void btnLab4_Click(System::Object^ sender, System::EventArgs^ e);
+private: System::Void btnLab1_Click(System::Object^ sender, System::EventArgs^ e);
 };
 }

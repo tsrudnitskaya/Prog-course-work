@@ -36,6 +36,9 @@
     <ClCompile Include="Forms\lab4.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Forms\Lab1.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Forms\MainForm.h">
@@ -57,6 +60,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Forms\lab4.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Forms\Lab1.h">
       <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>

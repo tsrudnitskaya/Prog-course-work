@@ -86,6 +86,7 @@ namespace Coursach {
 
 
 
+
 	private: System::ComponentModel::IContainer^ components;
 
 	private:

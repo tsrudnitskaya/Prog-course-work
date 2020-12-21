@@ -79,8 +79,12 @@ namespace Coursach {
 	private: System::Windows::Forms::RichTextBox^ richTextBox2;
 
 
-	private: System::Windows::Forms::DataGridView^ matrixView2;
+
 	private: System::Windows::Forms::RichTextBox^ richTextBox3;
+	private: System::Windows::Forms::DataGridView^ matrixView2;
+
+
+
 
 
 
@@ -182,8 +186,8 @@ namespace Coursach {
 			this->quotersOptionsCombo = (gcnew System::Windows::Forms::ComboBox());
 			this->matrixView = (gcnew System::Windows::Forms::DataGridView());
 			this->secondMatrixPanel = (gcnew System::Windows::Forms::Panel());
-			this->matrixView2 = (gcnew System::Windows::Forms::DataGridView());
 			this->label6 = (gcnew System::Windows::Forms::Label());
+			this->matrixView2 = (gcnew System::Windows::Forms::DataGridView());
 			this->errPanel->SuspendLayout();
 			this->errorPanel->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
@@ -213,6 +217,7 @@ namespace Coursach {
 			this->errorPanel->Name = L"errorPanel";
 			this->errorPanel->Size = System::Drawing::Size(254, 52);
 			this->errorPanel->TabIndex = 35;
+			this->errorPanel->Visible = false;
 			// 
 			// pictureBox1
 			// 
@@ -387,8 +392,7 @@ namespace Coursach {
 			this->richTextBox3->Name = L"richTextBox3";
 			this->richTextBox3->Size = System::Drawing::Size(258, 40);
 			this->richTextBox3->TabIndex = 45;
-			this->richTextBox3->Text = L"*–езультаты действий при необходимости округл€ютс€ до третьего знака, а слишком б"
-				L"ольшие числа не влезут в форму, сори";
+			this->richTextBox3->Text = L"*–езультаты действий при необходимости округл€ютс€ до третьего знака";
 			// 
 			// richTextBox2
 			// 
@@ -617,7 +621,17 @@ namespace Coursach {
 			this->secondMatrixPanel->Name = L"secondMatrixPanel";
 			this->secondMatrixPanel->Size = System::Drawing::Size(358, 255);
 			this->secondMatrixPanel->TabIndex = 35;
-			this->secondMatrixPanel->Visible = false;
+			// 
+			// label6
+			// 
+			this->label6->AutoSize = true;
+			this->label6->Dock = System::Windows::Forms::DockStyle::Top;
+			this->label6->Font = (gcnew System::Drawing::Font(L"Segoe UI", 11));
+			this->label6->Location = System::Drawing::Point(0, 0);
+			this->label6->Name = L"label6";
+			this->label6->Size = System::Drawing::Size(161, 20);
+			this->label6->TabIndex = 34;
+			this->label6->Text = L"»зменЄнна€ матрица";
 			// 
 			// matrixView2
 			// 
@@ -661,17 +675,6 @@ namespace Coursach {
 			this->matrixView2->ShowEditingIcon = false;
 			this->matrixView2->Size = System::Drawing::Size(358, 235);
 			this->matrixView2->TabIndex = 35;
-			// 
-			// label6
-			// 
-			this->label6->AutoSize = true;
-			this->label6->Dock = System::Windows::Forms::DockStyle::Top;
-			this->label6->Font = (gcnew System::Drawing::Font(L"Segoe UI", 11));
-			this->label6->Location = System::Drawing::Point(0, 0);
-			this->label6->Name = L"label6";
-			this->label6->Size = System::Drawing::Size(161, 20);
-			this->label6->TabIndex = 34;
-			this->label6->Text = L"»зменЄнна€ матрица";
 			// 
 			// Lab3
 			// 
